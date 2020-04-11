@@ -2,8 +2,8 @@
 $title = "INI files";
 require("header.php");?>
 
-<p>You can set <a href="params.<?=$fileExt;?>">parameters</a> for Meson Player
-using settings.ini files and/or <a href="command.<?=$fileExt;?>">command line</a>.</p>
+<p>You can set <a href="params.html">parameters</a> for Meson Player
+using settings.ini files and/or <a href="command.html">command line</a>.</p>
 
 <p>Upon startup Meson Player will look for <code>settings.ini</code> file in the following places:</p>
 <ol>

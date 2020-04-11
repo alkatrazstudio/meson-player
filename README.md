@@ -1,6 +1,6 @@
 # Meson Player - an invisible audio player
 
-Meson Player is a very convenient audio player if you don't need any flashy GUI to control a playback or manage playlists.
+Meson Player is a very convenient audio player if you don't need any flashy GUI to control the playback or manage playlists.
 You just run it and then forget about it. The player is running in a background.
 Switching tracks, volume control, loading and saving playlists, all of this can be done via global hotkeys.
 Therefore, you can control the player while working in any application.

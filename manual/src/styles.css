@@ -13,7 +13,7 @@ header h1 * {
 }
 
 header h1 span {
-    font-family: "Courier New", monospace;
+    font-family: monospace;
     font-weight: bold;
     font-variant: small-caps;
     font-size: 200%;

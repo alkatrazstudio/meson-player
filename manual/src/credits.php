@@ -14,7 +14,7 @@ to read its distibution license and terms of usage.</a></p>
 <li><b>BASS Audio Library</b> by Un4seen Developments Ltd:
 <a target="_blank" href="https://www.un4seen.com/bass.html">https://www.un4seen.com/bass.html</a></li>
 
-<li><b>Qt</b> by Digia Plc:
+<li><b>Qt</b> by The Qt Company:
 <a target="_blank" href="https://www.qt.io/">https://www.qt.io/</a></li>
 
 <li><b>BASSMIX, BASSCD, BASSFLAC, BASSMIDI, BASSWMA, BASSWV</b> by Un4seen Developments Ltd:

@@ -10,7 +10,7 @@ Meson Player is distributed under the terms of GPLv3 and also uses third-party l
 
 Meson Player uses the following libraries:
 BASS Audio Library by Un4seen Developments Ltd: https://www.un4seen.com/bass.html
-Qt by Digia Plc: https://www.qt.io/
+Qt by The Qt Company: https://www.qt.io/
 BASSMIX, BASSCD, BASSFLAC, BASSMIDI, BASSWMA, BASSWV by Un4seen Developments Ltd: https://www.un4seen.com/bass.html#addons
 BASS_AAC, BASS_AC3, BASS_ALAC, BASS_APE, BASS_MPC, BASS_OFR, BASS_SPX, BASS_TTA by Sebastian Andersson: https://www.un4seen.com/bass.html#addons
 SimpleCrypt by Andre Somers: https://wiki.qt.io/Simple_encryption_with_SimpleCrypt

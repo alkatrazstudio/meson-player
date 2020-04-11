@@ -15,16 +15,16 @@ in that case <code>B</code> will output that data to <code>stdout</code>.</li>
 <p>You can pass either <b>one</b> control command (see the list below)
 or some of the following (in any order and/or quantity):</p>
 <ul>
-<li><a href="command.<?=$fileExt;?>#filenames">Filenames, directories, URLs</a> of music files and/or playlists
+<li><a href="command.html#filenames">Filenames, directories, URLs</a> of music files and/or playlists
 (e.g <code>C:\music\file.ogg</code>);</li>
 <li>
-Certain <a href="params.<?=$fileExt;?>">setup parameters</a>:
-<code><a href="params.<?=$fileExt;?>#autoload-playlists">autoload-playlists</a></code>,
-<code><a href="params.<?=$fileExt;?>#index">index</a></code>,
-<code><a href="params.<?=$fileExt;?>#load-only">load-only</a></code>,
-<code><a href="params.<?=$fileExt;?>#playback-mode">playback-mode</a></code>,
-<code><a href="params.<?=$fileExt;?>#subdirs">subdirs</a></code> and
-<code><a href="params.<?=$fileExt;?>#volume">volume</a></code>;
+Certain <a href="params.html">setup parameters</a>:
+<code><a href="params.html#autoload-playlists">autoload-playlists</a></code>,
+<code><a href="params.html#index">index</a></code>,
+<code><a href="params.html#load-only">load-only</a></code>,
+<code><a href="params.html#playback-mode">playback-mode</a></code>,
+<code><a href="params.html#subdirs">subdirs</a></code> and
+<code><a href="params.html#volume">volume</a></code>;
 </li>
 </ul>
 
@@ -42,7 +42,7 @@ Note, that if you pass a control command then it should be the only command line
 Depending on OS you do something like this:</p>
 <ul>
 <li><b>Windows</b><br>
-<code>C:\Windows\SysWOW64>"C:\Program Files (x86)\Meson Player\mesonplayerctrl.exe" --cmd-get-volume
+<code>C:\Windows\SysWOW64>"C:\Program Files\Meson Player\mesonplayerctrl.exe" --cmd-get-volume
 45
 
 C:\Windows\SysWOW64>
@@ -132,7 +132,7 @@ where <code>n</code> is a track's zero-based index inside a corresponding CUE fi
 
 <hr id="get-playback-mode">
 <h2>get-playback-mode</h2>
-<p><b>Returns</b>: <a href="params.<?=$fileExt;?>#playback-mode">playback mode</a>
+<p><b>Returns</b>: <a href="params.html#playback-mode">playback mode</a>
 (<code>track_once</code>,
 <code>all_once</code>,
 <code>track_loop</code>,
@@ -229,13 +229,13 @@ See <code><a href="#get-position">get-position</a></code> command for details.</
 <hr id="volume-down">
 <h2>volume-down</h2>
 <p>Lower sound volume down. Volume step can be set via
-<code><a href="params.<?=$fileExt;?>#volume-step">volume-step</a></code> parameter.</p>
+<code><a href="params.html#volume-step">volume-step</a></code> parameter.</p>
 <p><b>Returns</b>: resulting sound volume in range of [0;100].</p>
 
 <hr id="volume-up">
 <h2>volume-up</h2>
 <p>Raise sound volume up. Volume step can be set via
-<code><a href="params.<?=$fileExt;?>#volume-step">volume-step</a></code> parameter.</p>
+<code><a href="params.html#volume-step">volume-step</a></code> parameter.</p>
 <p><b>Returns</b>: resulting sound volume in range of [0;100].</p>
 
 <?php require("footer.php");

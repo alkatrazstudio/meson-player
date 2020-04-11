@@ -2,7 +2,7 @@
 $title = "Playlists";
 require("header.php");?>
 
-<p class="block warning">Some <a href="mods.<?=$fileExt;?>">options</a> can alter hotkeys behavior!</p>
+<p class="block warning">Some <a href="mods.html">options</a> can alter hotkeys behavior!</p>
 
 <p class="block warning">When on OSX, keep in mind that all <code>CTRL</code>'s in this document refer to <code>Command</code> key, not to an actual <code>CTRL</code> key.</p>
 
@@ -11,7 +11,7 @@ require("header.php");?>
 <li>You can manage playlists. Each playlist is referenced by its playlist ID, which is a numeric value.</li>
 <li>To save currently loaded tracks to a playlist, hold <code>ALT</code>, then type playlist ID on NumPad.</li>
 <li>To load tracks from a saved playlist, hold <code>CTRL</code>, then type playlist ID on NumPad.</li>
-<li>Note, that playlists ID starting with "0" are <a href="syslists.<?=$fileExt;?>">reserved</a> and should not be used as regular playlists.</li>
+<li>Note, that playlists ID starting with "0" are <a href="syslists.html">reserved</a> and should not be used as regular playlists.</li>
 <li>Your playlists are stored in <code>&lt;your home directory&gt;/.mesonplayer/playlists</code>.</li>
 </ul>
 

@@ -3,8 +3,8 @@ $title = "Setup parameters";
 require("header.php");?>
 
 <p>Setup parameters affect various aspects of playback and appearance of Meson Player.
-Such parameters can be loaded from <a href="ini.<?=$fileExt;?>">settings.ini</a> files
-or passed via <a href="command.<?=$fileExt;?>">command line</a>.
+Such parameters can be loaded from <a href="ini.html">settings.ini</a> files
+or passed via <a href="command.html">command line</a>.
 You can pass these parameters only if the application isn't running yet (except
 <code><a href="#autoload-playlists">autoload-playlists</a></code>,
 <code><a href="#index">index</a></code>,
@@ -77,7 +77,7 @@ You can pass these parameters only if the application isn't running yet (except
 <hr id="index">
 <h2>index</h2>
 <p>Sets a file number to play. The first filename has the index of zero.</p>
-<p class="warning">This parameter can only be specified via <a href="command.<?=$fileExt;?>">command line</a> and
+<p class="warning">This parameter can only be specified via <a href="command.html">command line</a> and
 only makes sense when some filenames were also specified.</p>
 <p>If there are filenames in command line as well, then this parameter will choose what file to play. If there were no filenames, then this parameter will change the current track to a track with the specified index in a current playlist.</p>
 <p><b>Valid values</b>: any positive integer</p>
@@ -91,7 +91,7 @@ only makes sense when some filenames were also specified.</p>
 <hr id="load-only">
 <h2>load-only</h2>
 <p>Whether to play or not to play the music after the music file is loaded.</p>
-<p class="warning">This parameter can only be specified via <a href="command.<?=$fileExt;?>">command line</a> and
+<p class="warning">This parameter can only be specified via <a href="command.html">command line</a> and
 only makes sense when some filenames were also specified.</p>
 <p><b>Valid values</b>: true, false</p>
 <p><b>If not specified</b>: Auto-play music. The exact music file can be specified via
@@ -105,35 +105,35 @@ only makes sense when some filenames were also specified.</p>
 
 <hr id="mods-cmd">
 <h2>mods-cmd</h2>
-<p><a href="mods.<?=$fileExt;?>">Hotkey modifiers</a> for command keys (play, next, vol up, ...).</p>
+<p><a href="mods.html">Hotkey modifiers</a> for command keys (play, next, vol up, ...).</p>
 <p><b>Valid values</b>: unspecified, <code>OFF</code> or any combination of <code>CTRL</code>, <code>SHIFT</code> or <code>ALT</code> separated by <code>+</code> sign.</p>
 <p class="block warning">These values should not be identical to <code><a href="#mods-load">mods-load</a></code> or <code><a href="#mods-save">mods-save</a></code> parameters.</p>
 <p><b>Default</b>: &lt;none&gt;</p>
 
 <hr id="mods-mm">
 <h2>mods-mm</h2>
-<p><a href="mods.<?=$fileExt;?>">Hotkey modifiers</a> for multimedia keys (play/pause, next, ...).</p>
+<p><a href="mods.html">Hotkey modifiers</a> for multimedia keys (play/pause, next, ...).</p>
 <p><b>Valid values</b>: unspecified, <code>OFF</code> or any combination of <code>CTRL</code>, <code>SHIFT</code> or <code>ALT</code> separated by <code>+</code> sign.</p>
 <p class="block warning">These values should not be identical to <code><a href="#mods-mm2">mods-mm2</a></code> parameter.</p>
 <p><b>Default</b>: &lt;none&gt;</p>
 
 <hr id="mods-mm2">
 <h2>mods-mm2</h2>
-<p><a href="mods.<?=$fileExt;?>">Hotkey modifiers</a> for multimedia keys for jumping to a next/previous folder.</p>
+<p><a href="mods.html">Hotkey modifiers</a> for multimedia keys for jumping to a next/previous folder.</p>
 <p><b>Valid values</b>: unspecified, <code>OFF</code> or any combination of <code>CTRL</code>, <code>SHIFT</code> or <code>ALT</code> separated by <code>+</code> sign.</p>
 <p class="block warning">These values should not be identical to <code><a href="#mods-mm">mods-mm</a></code> parameter.</p>
 <p><b>Default</b>: CTRL</p>
 
 <hr id="mods-load">
 <h2>mods-load</h2>
-<p><a href="mods.<?=$fileExt;?>">Hotkey modifiers</a> for loading playlists.</p>
+<p><a href="mods.html">Hotkey modifiers</a> for loading playlists.</p>
 <p><b>Valid values</b>: unspecified, <code>OFF</code> or any combination of <code>CTRL</code>, <code>SHIFT</code> or <code>ALT</code> separated by <code>+</code> sign.</p>
 <p class="block warning">These values should not be identical to <code><a href="#mods-cmd">mods-cmd</a></code> or <code><a href="#mods-save">mods-save</a></code> parameters.</p>
 <p><b>Default</b>: CTRL</p>
 
 <hr id="mods-save">
 <h2>mods-save</h2>
-<p><a href="mods.<?=$fileExt;?>">Hotkey modifiers</a> for saving playlists.</p>
+<p><a href="mods.html">Hotkey modifiers</a> for saving playlists.</p>
 <p><b>Valid values</b>: unspecified, <code>OFF</code> or any combination of <code>CTRL</code>, <code>SHIFT</code> or <code>ALT</code> separated by <code>+</code> sign.</p>
 <p class="block warning">These values should not be identical to <code><a href="#mods-cmd">mods-cmd</a></code> or <code><a href="#mods-load">mods-load</a></code> parameters.</p>
 <p><b>Default</b>: ALT</p>
@@ -153,7 +153,7 @@ only makes sense when some filenames were also specified.</p>
 <hr id="playback-mode">
 <h2>playback-mode</h2>
 <p>Set playback mode.</p>
-<p class="warning">This parameter can only be specified via <a href="command.<?=$fileExt;?>">command line</a>.</p>
+<p class="warning">This parameter can only be specified via <a href="command.html">command line</a>.</p>
 <p><b>Valid values</b>:</p>
 <ul>
 <li>track_once - Play one track one time then stop;</li>
@@ -166,7 +166,7 @@ only makes sense when some filenames were also specified.</p>
 
 <hr id="playlists-type">
 <h2>playlists-type</h2>
-<p>Save <a href="lists.<?=$fileExt;?>">playlists</a> in this format.</p>
+<p>Save <a href="lists.html">playlists</a> in this format.</p>
 <p><b>Valid values</b>: M3U, ASX, XSPF, PLS, WPL</p>
 <p><b>Default</b>: M3U</p>
 <p class="block warning">Playlists are saved in UTF-8, even M3U.</p>
@@ -180,7 +180,7 @@ only makes sense when some filenames were also specified.</p>
 <hr id="position">
 <h2>position</h2>
 <p>Sets a file position in seconds. If there are filenames in command line as well, then the first file that's going to be played will start from te specified position. If there were no filenames, then this parameter will change the position of currently playing file.</p>
-<p class="warning">This parameter can only be specified via <a href="command.<?=$fileExt;?>">command line</a> when the application is already running.</p>
+<p class="warning">This parameter can only be specified via <a href="command.html">command line</a> when the application is already running.</p>
 <p><b>Valid values</b>: any positive floating point value (e.g. 12.5)</p>
 
 <hr id="proxy">
@@ -245,7 +245,7 @@ This keeps percussive sounds sharp, whereas normal ramping can slightly deaden t
 
 <hr id="subdirs">
 <h2>subdirs</h2>
-<p>Load music files recursively when a folder is specified via <a href="command.<?=$fileExt;?>">command line</a>.</p>
+<p>Load music files recursively when a folder is specified via <a href="command.html">command line</a>.</p>
 <p><b>Valid values</b>: true, false</p>
 <p><b>Default</b>: true</p>
 
@@ -263,7 +263,7 @@ This keeps percussive sounds sharp, whereas normal ramping can slightly deaden t
 
 <hr id="system-playlists">
 <h2>system-playlists</h2>
-<p><a href="syslists.<?=$fileExt;?>">Enables system playlists</a>.</p>
+<p><a href="syslists.html">Enables system playlists</a>.</p>
 <p><b>Valid values</b>: true, false</p>
 <p><b>Default</b>: true</p>
 
@@ -284,21 +284,21 @@ This keeps percussive sounds sharp, whereas normal ramping can slightly deaden t
 <p>
 Note, that even if the tray icon is not displayed, you're still able to close the application gracefully.
 For that you should set <code>system-playlists</code> parameter to true.
-Then you can close the app using <code>0011</code> <a href="control.<?=$fileExt;?>">command</a>.
+Then you can close the app using <code>0011</code> <a href="control.html">command</a>.
 <p>
 <b>Valid values</b>: true, false</p>
 <p><b>Default</b>: true</p>
 
 <hr id="type-timeout">
 <h2>type-timeout</h2>
-<p>When typing a <a href="lists.<?=$fileExt;?>">playlist ID</a> you have only a limited time interval to enter a next digit.
+<p>When typing a <a href="lists.html">playlist ID</a> you have only a limited time interval to enter a next digit.
 This parameter sets this interval in milliseconds.</p>
 <p><b>Valid values</b>: any positive integer value</p>
 <p><b>Default</b>: 1000</p>
 
 <hr id="unlimited-playlists">
 <h2>unlimited-playlists</h2>
-<p>When this option is set to false, then a <a href="lists.<?=$fileExt;?>">playlist</a> will be loaded/saved instanly
+<p>When this option is set to false, then a <a href="lists.html">playlist</a> will be loaded/saved instanly
 when you type the first digit of its ID.</p>
 <p>Note that disabling this option will limit the number of playlists to 9.</p>
 <p><b>Valid values</b>: true, false</p>
@@ -338,7 +338,7 @@ when you type the first digit of its ID.</p>
 <hr id="volume">
 <h2>volume</h2>
 <p>Sets a sound volume.</p>
-<p class="warning">This parameter can only be specified via <a href="command.<?=$fileExt;?>">command line</a>.</p>
+<p class="warning">This parameter can only be specified via <a href="command.html">command line</a>.</p>
 <p><b>Valid values</b>: any integer within a range [0;100]</p>
 <p><b>If not specified</b>: Do not change the sound volume.</p>
 

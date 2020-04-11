@@ -4,9 +4,9 @@ require("header.php");?>
 
 <p>
 You may invoke some additional commands via hotkeys
-that were not mentioned in <a href="basics.<?=$fileExt;?>">basic hotkeys</a> section.
+that were not mentioned in <a href="basics.html">basic hotkeys</a> section.
 Usually they may come in handy if you hid the app's tray icon, so that you are unable to bring up the popup menu.
-To enter such a command you'll have to <a href="lists.<?=$fileExt;?>">"load" a certain playlist</a>.
+To enter such a command you'll have to <a href="lists.html">"load" a certain playlist</a>.
 These playlists ID's begin with <code>00</code>. After entering <code>00</code> you should enter a command ID:
 </p>
 <ul>
@@ -25,10 +25,10 @@ These playlists ID's begin with <code>00</code>. After entering <code>00</code> 
 </ul>
 
 <p class="block example">For example, if you want to quit the application,
-you should <a href="lists.<?=$fileExt;?>">load a playlist</a> with ID <code>0011</code>.</p>
+you should <a href="lists.html">load a playlist</a> with ID <code>0011</code>.</p>
 
-<p>You must set <code>system-playlists=true</code> in <a href="ini.<?=$fileExt;?>">settings.ini</a>
-or via <a href="command.<?=$fileExt;?>">command line</a> to enable these system playlists (they're enabled by default, though).</p>
+<p>You must set <code>system-playlists=true</code> in <a href="ini.html">settings.ini</a>
+or via <a href="command.html">command line</a> to enable these system playlists (they're enabled by default, though).</p>
 
 <p class="block warning">
 If system playlists are enabled, then <code>CTRL+NumPad 0</code>
@@ -41,6 +41,6 @@ If you disabled hotkeys, then after loading a system playlist the hotkeys will b
 </p>
 
 <p class="block warning">This section uses <code>CTRL</code> as a default modifier for loading playlists,
-but you should not forget, that you are able to <a href="mods.<?=$fileExt;?>">change that behavior</a>.</p>
+but you should not forget, that you are able to <a href="mods.html">change this behavior</a>.</p>
 
 <?php require("footer.php");

@@ -14,22 +14,22 @@ require("header.php");?>
 <li>multimedia keys with <code>CTRL</code> modifier are used for "pause/resume", "next folder" and "previous folder" commands.</li>
 </ul>
 
-<p>Use <a href="params.<?=$fileExt;?>#mods-cmd">mods-* parameters</a> in <a href="ini.<?=$fileExt;?>">settings.ini file</a>
-or pass these parameters via <a href="command.<?=$fileExt;?>">command line</a>.</p>
+<p>Use <a href="params.html#mods-cmd">mods-* parameters</a> in <a href="ini.html">settings.ini file</a>
+or pass these parameters via <a href="command.html">command line</a>.</p>
 
 <p class="block example">
 For example, by default there are some main hotkeys that don't require any modifiers,
 therefore to enter a command (e.g. volume up) you just need to press a NumPad key.
 However, in that case you won't be able to use NumPad keys for any other means until you disable all hotkeys.
 If you need NumPad keys for your own purposes, then you can apply modifier(s) to command keys.
-Use <a href="params.<?=$fileExt;?>#mods-cmd">mods-* parameters</a> in <a href="ini.<?=$fileExt;?>">settings.ini file</a>.
-E.g. you can set <a href="params.<?=$fileExt;?>#mods-cmd">mods-cmd</a>=CTRL+ALT in settings.ini,
+Use <a href="params.html#mods-cmd">mods-* parameters</a> in <a href="ini.html">settings.ini file</a>.
+E.g. you can set <a href="params.html#mods-cmd">mods-cmd</a>=CTRL+ALT in settings.ini,
 so that any command will be executed only if you hold <code>CTRL</code> and <code>ALT</code> keys.
 That is, to jump to the next track you should press <code>CTRL+ALT+NumPad 6</code> instead of <code>NumPad 6</code>.
 </p>
 
 <p>You can completely disable a certain set of hotkeys.
-Specify a value <code>OFF</code> for a corresponding <a href="params.<?=$fileExt;?>#mods-cmd">mods-* parameter</a>.</p>
+Specify a value <code>OFF</code> for a corresponding <a href="params.html#mods-cmd">mods-* parameter</a>.</p>
 
 <p class="block warning"><code>SHIFT</code> modifier is not supported on Windows.</p>
 <p class="block warning">Key modifiers should not overlap.

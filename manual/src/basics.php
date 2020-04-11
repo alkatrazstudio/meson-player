@@ -2,7 +2,7 @@
 $title = "Basic hotkeys";
 require("header.php");?>
 
-<p class="block warning">Some <a href="mods.<?=$fileExt;?>">parameters</a> can alter hotkeys behavior!</p>
+<p class="block warning">Some <a href="mods.html">parameters</a> can alter hotkeys behavior!</p>
 
 <p class="block warning">When on OSX, keep in mind that all <code>CTRL</code>'s in this document refer to <code>Command</code> key, not to an actual <code>CTRL</code> key.</p>
 

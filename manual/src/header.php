@@ -1,7 +1,4 @@
-<?php
-$printMode = isset($argv[1]) && $argv[1] == "print";
-$fileExt = $printMode ? "html" : "php";
-?><!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html lang="en-US">
 <head>
     <meta charset="utf-8"/>
@@ -11,7 +8,7 @@ $fileExt = $printMode ? "html" : "php";
 </head>
 <body>
 <header>
-    <h1><a href="index.<?=$fileExt;?>">
+    <h1><a href="index.html">
         <img src="app.png" id="app-logo" />
         <span>Meson Player</span>
     </a></h1>
