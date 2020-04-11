@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<installer-gui-script minSpecVersion="2">
+
+    <domains enable_anywhere="false" enable_currentUserHome="false" enable_localSystem="true"/>
+    <options customize="never" hostArchitectures="x86_64"/>
+
+    <allowed-os-versions>
+        <os-version min="10.12"/>
+    </allowed-os-versions>
+
+    <title>Meson Player %VERSION%</title>
+
+    <conclusion file="html/readme.html" mime-type="text/html"/>
+    <license file="html/license.html" mime-type="text/html"/>
+    <welcome file="html/welcome.html" mime-type="text/html"/>
+
+    <choices-outline>
+        <line choice="app"/>
+    </choices-outline>
+
+    <choice id="app" start_enabled="false" >
+        <pkg-ref id="net.alkatrazstudio.mesonplayer.app">app.pkg</pkg-ref>
+        <pkg-ref id="net.alkatrazstudio.mesonplayer.ctx">ctx.pkg</pkg-ref>
+    </choice>
+
+    <pkg-ref id="net.alkatrazstudio.mesonplayer.app">
+        <must-close>
+            <app id="net.alkatrazstudio.mesonplayer.app"/>
+            <app id="com.alkatrazstudio.mesonplayer.app"/>
+        </must-close>
+    </pkg-ref>
+
+</installer-gui-script>

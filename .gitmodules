@@ -1,0 +1,10 @@
+[submodule "common"]
+    path = common
+    url = https://github.com/alkatrazstudio/common.git
+    update = merge
+    branch = master
+[submodule "meson-sound-engine"]
+    path = meson-sound-engine
+    url = https://github.com/alkatrazstudio/meson-sound-engine.git
+    update = merge
+    branch = master

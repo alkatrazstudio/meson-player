@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2019 Alkatraz Studio -->
+<component type="desktop">
+    <id>net.alkatrazstudio.mesonplayer.desktop</id>
+    <name>Meson Player</name>
+    <launchable type="desktop-id">net.alkatrazstudio.mesonplayer.desktop</launchable>
+
+    <metadata_license>CC-BY-SA-4.0</metadata_license>
+    <project_license>GPL-3.0-or-later</project_license>
+
+    <summary>Invisible music player controlled by global hotkeys</summary>
+    <summary xml:lang="ru">Невидимый музыкальный проигрыватель, управляемый горячими клавишами</summary>
+
+    <description>
+        <p>
+            Meson Player is a music player that has almost no GUI.
+            It lets you listen to music without adding any cluuter in the screen.
+        </p>
+        <p>
+            Open a context menu of any folder with music and select "Open in Meson Player".
+            Then control the player with NumPad.
+            The player's tray menu has additional options and user's manual.
+        </p>
+        <p>
+            Meson Player can play a lot of streaming formats (FLAC, OGG, MP3, WAV, MP4, ...),
+            tracker formats (AY, YM, SID, XM, MOD, ....) and Internet radio streams (SHOUTcast).
+            It supports CUE files, gapless playback, Last.fm scrobbling, can control global audio volume
+            and some more.
+        </p>
+
+        <p xml:lang="ru">
+            Meson Player - это музыкальный плеер, который обходится почти без какого-либо графического интерфейса.
+            Он позволяет слушать музыку, не засоряя при этом экран.
+        </p>
+        <p xml:lang="ru">
+            Откройте контекстное меню любой папки с музыкой и выберите "Open in Meson Player".
+            После этого проигрывателем можно управлять с помощью NumPad.
+            Меню приложения в трее содержит дополнительные настройки и руководство пользователя.
+        </p>
+        <p xml:lang="ru">
+            Meson Player воспроизводит множество потоковых форматов (FLAC, OGG, MP3, WAV, M4A, ...),
+            трекерных форматов (AY, YM, SID, XM, MOD, ...) и интернет-радио (SHOUTcast).
+            Он поддерживает CUE-файлы, бесшовное воспроизведение, скробблинг Last.fm, может контролировать громкость системы
+            и умеет разные другие мелочи.
+        </p>
+    </description>
+
+    <developer_name>Alkatraz Studio</developer_name>
+    <update_contact>zxed@alkatrazstudio.net</update_contact>
+
+    <url type="homepage">https://sourceforge.net/projects/mesonplayer/</url>
+    <url type="bugtracker">https://sourceforge.net/p/mesonplayer/tickets/</url>
+    <url type="help">https://mesonplayer.sourceforge.io/wiki/</url>
+
+    <screenshots>
+        <screenshot type="default">
+            <caption>Meson Player in Kubuntu</caption>
+            <caption xml:lang="ru">Meson Player в Kubuntu</caption>
+            <image type="source" width="1200" height="450">https://mesonplayer.alkatrazstudio.net/img/kubuntu-notification.png</image>
+        </screenshot>
+        <screenshot>
+            <caption>Meson Player in Ubuntu</caption>
+            <caption xml:lang="ru">Meson Player в Ubuntu</caption>
+            <image type="source" width="600" height="1000">https://mesonplayer.alkatrazstudio.net/img/ubuntu-menu.png</image>
+        </screenshot>
+        <screenshot>
+            <caption>Meson Player in Manjaro XFCE</caption>
+            <caption xml:lang="ru">Meson Player в Manjaro XFCE</caption>
+            <image type="source" width="600" height="225">https://mesonplayer.alkatrazstudio.net/img/manjaro-xfce-tooltip.png</image>
+        </screenshot>
+    </screenshots>
+
+    <provides>
+        <binary>mesonplayer</binary>
+    </provides>
+</component>

@@ -1,0 +1,15 @@
+.*
+!.gitignore
+!.gitmodules
+
+/*.qbs.user*
+*.autosave
+
+/build/
+/plugins/
+
+/services/
+/data.qrc
+
+/TODO.TXT
+/*.AppImage

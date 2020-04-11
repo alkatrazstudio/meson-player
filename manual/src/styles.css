@@ -1,0 +1,138 @@
+body {
+    padding: 0px;
+}
+
+a {
+    color: black;
+    white-space: nowrap;
+}
+
+header h1 * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+header h1 span {
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 200%;
+    text-align: center;
+    margin: 0px;
+    letter-spacing: 2px;
+}
+
+header h1 a {
+    text-decoration: none;
+}
+
+article {
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.5);
+    font-family: Arial;
+    line-height: 125%;
+}
+
+header h1,
+article h1 {
+    text-align: center;
+}
+
+header,
+article,
+footer {
+    max-width: 800px;
+    width: 90%;
+    min-width: 480px;
+    padding: 10px;
+    margin: 0px auto;
+    color: black;
+    background: white;
+}
+
+header {
+    margin-top: 0px;
+    padding: 0px;
+}
+
+header h1 {
+    margin: 0px;
+}
+
+footer {
+    position: relative;
+    height: 35px;
+    margin-top: 15px;
+}
+
+footer .sf-link,
+footer .alst-link {
+    position: absolute;
+    top: 0px;
+}
+
+footer .sf-link {
+    left: 5px;
+}
+
+footer .alst-link {
+    margin-top: 5px;
+    right: 5px;
+}
+
+#app-logo {
+    height: 2em;
+}
+
+.flag-img {
+    height: 1em;
+    vertical-align: middle;
+}
+
+.img-shot {
+    float: right;
+    width: 50%;
+}
+
+.block {
+    padding: 5px 90px 5px 5px;
+    border: 1px solid gray;
+    position: relative;
+}
+
+.block:before {
+    position: absolute;
+    top: -10px;
+    right: 2px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 1px solid gray;
+    padding: 2px;
+}
+
+.block.warning,
+.block.warning:before {
+    background: #FF9;
+}
+
+.block.warning:before {
+    content: "warning";
+}
+
+.block.example,
+.block.example:before {
+    background: #9F9;
+}
+
+.block.example:before {
+    content: "example";
+}
+
+code {
+    padding: 0px 2px;
+    box-shadow: 0px 0px 1px 1px black;
+    background: #CCC;
+    font-family: monospace;
+    white-space: pre-line;
+    display: inline-block;
+}

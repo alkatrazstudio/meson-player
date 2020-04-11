@@ -1,0 +1,22 @@
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation; or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You may read GNU General Public License at: https://www.gnu.org/licenses/gpl.html
+
+Meson Player is distributed under the terms of GPL v3 and also uses third-party libraries and graphical assets with possibly different licenses. Visit a corresponding site of a particular library/graphics from the list below to read its distibution license and terms of usage.
+
+Meson Player uses the following libraries:
+BASS Audio Library by Un4seen Developments Ltd: https://www.un4seen.com/bass.html
+Qt by Digia Plc: https://www.qt.io/
+BASSMIX, BASSCD, BASSFLAC, BASSMIDI, BASSWMA, BASSWV by Un4seen Developments Ltd: https://www.un4seen.com/bass.html#addons
+BASS_AAC, BASS_AC3, BASS_ALAC, BASS_APE, BASS_MPC, BASS_OFR, BASS_SPX, BASS_TTA by Sebastian Andersson: https://www.un4seen.com/bass.html#addons
+SimpleCrypt by Andre Somers: https://wiki.qt.io/Simple_encryption_with_SimpleCrypt
+QuaZIP by Sergey A. Tachenov: https://stachenov.github.io/quazip/
+Qt and QML MPRIS interface and adaptor by Nemo Mobile: https://git.sailfishos.org/mer-core/qtmpris
+BASS_ADX, BASS_AIX by Zavyalov Alexey Alexandrovich: https://www.un4seen.com/bass.html#addons
+BASSZXTUNE by Alkatraz Studio: https://sourceforge.net/projects/basszxtune/
+
+Meson Player uses the following graphical assets:
+Main icon by TPDK: https://web.archive.org/web/20101007034032/http://blog.tpdkdesign.net/about/
+Tray icons are based on an icon by Francesco 'Architetto' Rollandin: https://openclipart.org/detail/33583
