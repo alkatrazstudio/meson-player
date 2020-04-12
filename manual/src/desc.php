@@ -11,6 +11,9 @@ Therefore, you can control the player while working in any application.
 And it lets you listen to your music without adding any clutter to your screen.
 </p>
 <p>
+The project's homepage:
+<a target="_blank" href="https://mesonplayer.alkatrazstudio.net">https://mesonplayer.alkatrazstudio.net</a>.
+<br>
 The project on SourceForge:
 <a target="_blank" href="https://sourceforge.net/projects/mesonplayer/">https://sourceforge.net/projects/mesonplayer/</a>.
 <br>

@@ -48,9 +48,9 @@
     <developer_name>Alkatraz Studio</developer_name>
     <update_contact>zxed@alkatrazstudio.net</update_contact>
 
-    <url type="homepage">https://sourceforge.net/projects/mesonplayer/</url>
-    <url type="bugtracker">https://sourceforge.net/p/mesonplayer/tickets/</url>
-    <url type="help">https://mesonplayer.sourceforge.io/wiki/</url>
+    <url type="homepage">https://mesonplayer.alkatrazstudio.net/</url>
+    <url type="bugtracker">https://github.com/alkatrazstudio/meson-player/issues</url>
+    <url type="help">https://mesonplayer.alkatrazstudio.net/</url>
 
     <screenshots>
         <screenshot type="default">

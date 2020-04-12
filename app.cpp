@@ -1946,7 +1946,7 @@ bool App::createTray()
         QDesktopServices::openUrl(url);
     });
     connect(menuHelp->addAction(tr("Website")), &QAction::triggered, [](){
-        QDesktopServices::openUrl(QUrl("https://mesonplayer.sourceforge.io"));
+        QDesktopServices::openUrl(QUrl("https://mesonplayer.alkatrazstudio.net"));
     });
     connect(menuHelp->addAction(tr("About...")), &QAction::triggered, [this](){
         if(aboutDialog)

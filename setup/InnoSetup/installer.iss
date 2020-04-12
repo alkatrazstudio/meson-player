@@ -6,7 +6,7 @@
 #define Name "mesonplayer"
 #define Title "Meson Player"
 #define Arch "x86_64"
-#define URL "https://mesonplayer.sourceforge.io/"
+#define URL "https://mesonplayer.alkatrazstudio.net"
 #define Publisher "Alkatraz Studio"
 #define PublisherURL "https://alkatrazstudio.net/"
 #define CopyrightYear "2012"
