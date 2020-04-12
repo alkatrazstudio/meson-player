@@ -6,8 +6,8 @@ require("header.php");?>
 
 <p>
     <a target="_blank" href="https://sourceforge.net/projects/mesonplayer/files/mesonplayer/">Download</a>
-    &middot;
-    <a target="_blank" href="https://github.com/alkatrazstudio/meson-player">Get source code</a>
+    &nbsp; &middot; &nbsp;
+    <a target="_blank" href="https://github.com/alkatrazstudio/meson-player">Source code</a>
 </p>
 
 <img src="shot.png" class="img-shot">
