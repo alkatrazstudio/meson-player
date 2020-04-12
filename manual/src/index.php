@@ -14,6 +14,9 @@ require("header.php");?>
 
 <ul>
     <li><a href="desc.html">Description</a></li>
+    <?php if($isSite) { ?>
+    <li><a href="screenshots.html">Screenshots</a></li>
+    <?php } ?>
     <li><a href="basics.html">Basic hotkeys</a></li>
     <li><a href="lists.html">Playlists</a></li>
     <li><a href="mods.html">Hotkey modifiers</a></li>

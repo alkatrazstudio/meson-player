@@ -60,15 +60,15 @@ Also, you can mail me directly.
 
 ## Screenshots
 
-![Meson Player on Kubuntu](https://mesonplayer.alkatrazstudio.net/img/kubuntu-notification.png "Meson Player on Kubuntu")
+![Meson Player on Kubuntu](https://mesonplayer.alkatrazstudio.net/screenshots/kubuntu-notification.png "Meson Player on Kubuntu")
 
-![Meson Player on Ubuntu](https://mesonplayer.alkatrazstudio.net/img/ubuntu-menu.png "Meson Player on Ubuntu")
+![Meson Player on Ubuntu](https://mesonplayer.alkatrazstudio.net/screenshots/ubuntu-menu.png "Meson Player on Ubuntu")
 
-![Meson Player on Manjaro Xfce](https://mesonplayer.alkatrazstudio.net/img/manjaro-xfce-tooltip.png "Meson Player on Manjaro Xfce")
+![Meson Player on Manjaro Xfce](https://mesonplayer.alkatrazstudio.net/screenshots/manjaro-xfce-tooltip.png "Meson Player on Manjaro Xfce")
 
-![Meson Player on Windows](https://mesonplayer.alkatrazstudio.net/img/win-notification.png "Meson Player on Windows")
+![Meson Player on Windows](https://mesonplayer.alkatrazstudio.net/screenshots/win-notification.png "Meson Player on Windows")
 
-![Meson Player on OSX](https://mesonplayer.alkatrazstudio.net/img/osx-notification.png "Meson Player on OSX")
+![Meson Player on OSX](https://mesonplayer.alkatrazstudio.net/screenshots/osx-notification.png "Meson Player on OSX")
 
 
 ## License

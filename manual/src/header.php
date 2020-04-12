@@ -1,3 +1,4 @@
+<?php $isSite = $argv[1] == "site";?>
 <!DOCTYPE HTML>
 <html lang="en-US">
 <head>

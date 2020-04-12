@@ -56,17 +56,17 @@
         <screenshot type="default">
             <caption>Meson Player in Kubuntu</caption>
             <caption xml:lang="ru">Meson Player в Kubuntu</caption>
-            <image type="source" width="1200" height="450">https://mesonplayer.alkatrazstudio.net/img/kubuntu-notification.png</image>
+            <image type="source" width="1200" height="450">https://mesonplayer.alkatrazstudio.net/screenshots/kubuntu-notification.png</image>
         </screenshot>
         <screenshot>
             <caption>Meson Player in Ubuntu</caption>
             <caption xml:lang="ru">Meson Player в Ubuntu</caption>
-            <image type="source" width="600" height="1000">https://mesonplayer.alkatrazstudio.net/img/ubuntu-menu.png</image>
+            <image type="source" width="600" height="1000">https://mesonplayer.alkatrazstudio.net/screenshots/ubuntu-menu.png</image>
         </screenshot>
         <screenshot>
             <caption>Meson Player in Manjaro XFCE</caption>
             <caption xml:lang="ru">Meson Player в Manjaro XFCE</caption>
-            <image type="source" width="600" height="225">https://mesonplayer.alkatrazstudio.net/img/manjaro-xfce-tooltip.png</image>
+            <image type="source" width="600" height="225">https://mesonplayer.alkatrazstudio.net/screenshots/manjaro-xfce-tooltip.png</image>
         </screenshot>
     </screenshots>
 

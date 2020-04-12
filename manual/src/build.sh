@@ -2,7 +2,14 @@
 set -e
 cd "$(dirname -- "${BASH_SOURCE[0]}")"
 
-DISTDIR=../dist
+MODE="$1"
+
+if [[ $MODE == site ]]
+then
+    DISTDIR=../site
+else
+    DISTDIR=../dist
+fi
 rm -rf "$DISTDIR"
 mkdir "$DISTDIR"
 
@@ -13,10 +20,15 @@ do
     then
         continue
     fi
-    php "$FILE" print > "$DISTDIR/$BASE.html"
+    php "$FILE" "$MODE" > "$DISTDIR/$BASE.html"
 done
 
 cp *.svg *.css *.png "$DISTDIR/"
 cp ../../setup/meson-player.png "$DISTDIR/app.png"
+
+if [[ $MODE == site ]]
+then
+    cp -r screenshots "$DISTDIR/"
+fi
 
 echo "DONE!"
