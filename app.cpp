@@ -22,6 +22,9 @@
 #include "movetotrash.h"
 #include "qiodevicehelper.h"
 
+#include <thread>
+#include <chrono>
+
 static const int APPKEY_PAUSE = 0;
 static const int APPKEY_PREV_DIR = 7;
 static const int APPKEY_NEXT_DIR = 9;
@@ -316,7 +319,7 @@ int App::main()
     if(!startLocalServer())
         return -1;
     loadTranslations();
-    int c = 10;
+    int c = 10; // try 10 times before failing
     QString s;
 
     while(!createSoundObject())
@@ -349,11 +352,9 @@ int App::main()
                 return -1;
         }
         qDebug() << "tries left:" << c;
-#ifdef Q_OS_WIN
-        Sleep(1000);
-#else
-        sleep(1000);
-#endif
+        // sleep for one second then try again
+        // because it may be a temporary failure
+        std::this_thread::sleep_for(std::chrono::seconds(1));
     }
     if(settings.trayIcon)
         tryCreateTray();
