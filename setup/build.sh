@@ -219,9 +219,9 @@ function build_linux
 
     if [[ -z $SIGN_KEY ]]
     then
-        appimagetool "$DIST_DIR" "$APPIMAGE_FILE"
+        appimagetool --appimage-extract-and-run "$DIST_DIR" "$APPIMAGE_FILE"
     else
-        appimagetool --sign --sign-key "$SIGN_KEY" "$DIST_DIR" "$APPIMAGE_FILE"
+        appimagetool --appimage-extract-and-run --sign --sign-key "$SIGN_KEY" "$DIST_DIR" "$APPIMAGE_FILE"
     fi
 }
 
