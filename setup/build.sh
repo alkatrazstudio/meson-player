@@ -105,7 +105,7 @@ then
     case "$OS" in
         linux)
             qbs-setup-qt "$QT_DIR/bin/qmake" "$QBS_PROFILE"
-            QBS_BASE_PROFILE=gcc
+            QBS_BASE_PROFILE="$(qbs config --list profiles | grep -Po "^profiles.\Kx86_64-linux-gnu-gcc-[^.]+" | head -1)"
             ;;
 
         windows)
