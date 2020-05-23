@@ -23,7 +23,7 @@ Therefore, you can control the player while working in any application.
 
 ## Supported systems
 
-* Ubuntu v19.10 64-bit (may not work on Wayland)
+* Ubuntu v20.04 64-bit (may not work on Wayland)
 * Windows 10 v1909 64-bit
 * OSX Catalina
 
