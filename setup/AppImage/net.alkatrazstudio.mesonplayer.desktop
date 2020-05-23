@@ -4,4 +4,4 @@ Type=Application
 Exec=mesonplayer %U
 Name=Meson Player
 Icon=meson-player
-Categories=Audio;Player;Qt;
+Categories=Audio;AudioVideo;Player;Qt;
