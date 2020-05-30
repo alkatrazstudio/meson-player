@@ -87,8 +87,7 @@ Project {
                     'lastfmpassform.h',
                     'lastfmpassform.cpp',
                     'movetotrash.h',
-                    'movetotrash.cpp',
-                    'data.qrc'
+                    'movetotrash.cpp'
                 ]
                 if(Common.isLinux)
                 {
@@ -101,8 +100,8 @@ Project {
 
         cpp.defines: {
             var defs = []
-            if(lfmDecryptKeyProbe.lfmDecryptKey)
-                defs.push('LFM_DECRYPT_KEY=0x' + lfmDecryptKeyProbe.lfmDecryptKey)
+            if(lfmDecryptKey)
+                defs.push('LFM_DECRYPT_KEY=0x' + lfmDecryptKey)
             return defs
         }
 
@@ -155,6 +154,7 @@ Project {
             ]
         }
 
+        readonly property string lfmDecryptKey: lfmDecryptKeyProbe.lfmDecryptKey
         Probe {
             id: lfmDecryptKeyProbe
             property string lfmDecryptKey
@@ -168,6 +168,29 @@ Project {
                     lfmDecryptKey = ''
                     found = false
                 }
+            }
+        }
+
+        Rule {
+            multiplex: true
+            Artifact {
+                filePath: product.sourceDirectory+'/data.qrc'
+                fileTags: 'qrc'
+            }
+            prepare: {
+                var cmd = new JavaScriptCommand()
+                cmd.description = 'generating ' + output.fileName
+                cmd.sourceCode = function() {
+                    var f = new TextFile(output.filePath, TextFile.WriteOnly)
+                    f.writeLine('<RCC>')
+                    f.writeLine('    <qresource prefix="/">')
+                    if(product.lfmDecryptKey)
+                        f.writeLine('        <file>services/lastfm/data</file>')
+                    f.writeLine('    </qresource>')
+                    f.writeLine('</RCC>')
+                    f.close()
+                }
+                return cmd
             }
         }
     }
