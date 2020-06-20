@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "release-edge": "node edge-github.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "@octokit/rest": "^18.0.0",
+    "fast-glob": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=14.4.0"
+  },
+  "license": "GPL-3.0-or-later"
+}
