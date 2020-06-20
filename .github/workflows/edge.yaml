@@ -1,9 +1,11 @@
 name: Edge release
 
+
 on:
   push:
     branches:
     - dev
+
 
 jobs:
   build-linux:
@@ -34,3 +36,23 @@ jobs:
       with:
         name: release-linux
         path: "*.AppImage"
+
+
+  release:
+    runs-on: ubuntu-20.04
+    container: "ubuntu:20.04"
+
+    needs:
+    - build-linux
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+
+    - name: Load the release binaries
+      uses: actions/download-artifact@v2
+
+    - name: Release
+      run: setup/ci/automation/release-edge.sh
