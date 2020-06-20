@@ -1,6 +1,7 @@
 .*
 !.gitignore
 !.gitmodules
+!.github
 
 /*.qbs.user*
 *.autosave
