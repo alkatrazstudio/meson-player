@@ -10,4 +10,7 @@ const rootDir = getRoot('../../..')
         `${rootDir}/release-linux/*.AppImage`
     ])
     await recreatePreReleaseWithTag(RELEASE_TAG, body, filenames)
-})()
+})().catch(e => {
+    console.log(e)
+    process.exit(-1)
+})
