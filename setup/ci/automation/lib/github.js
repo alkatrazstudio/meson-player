@@ -90,7 +90,7 @@ export async function publishRelease(release_id) {
 export async function uploadReleaseAsset(release_id, filename, name = undefined) {
     let data = null
     try {
-        data = fs.readFile(filename)
+        data = await fs.readFile(filename)
     } catch(e) {
         console.error(`FILE READ ERROR: ${filename}: ${e.message}`)
         return null
