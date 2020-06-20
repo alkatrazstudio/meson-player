@@ -8,6 +8,7 @@
 /build/
 /plugins/
 
+/external*
 /services/
 /data.qrc
 
