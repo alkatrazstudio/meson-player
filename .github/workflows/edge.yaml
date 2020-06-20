@@ -11,6 +11,12 @@ jobs:
     container: "ubuntu:20.04"
 
     steps:
+    - name: Bootstrap
+      run: |
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update -yq
+        apt-get install -yq git
+
     - name: Checkout
       uses: actions/checkout@v2
       with:
