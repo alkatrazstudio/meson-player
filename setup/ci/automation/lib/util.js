@@ -46,6 +46,6 @@ export function getEnv(key)
     if(fileEnv[key] !== undefined)
         return fileEnv[key]
     if(process.env[key] !== undefined)
-        process.env[key]
+        return process.env[key]
     throw Error(`Environment var is not set: ${key}`)
 }
