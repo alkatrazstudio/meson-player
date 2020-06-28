@@ -30,7 +30,7 @@ pacman --noconfirm --needed -S \
 #
 mkdir qtpkg
 pushd qtpkg
-    wget 'https://github.com/alkatrazstudio/qt5-build/releases/download/v5.13.2-0/mingw-w64-x86_64-qt5alst-5.13.2-1-any.pkg.tar.xz'
+    wget -nv 'https://github.com/alkatrazstudio/qt5-build/releases/download/v5.13.2-0/mingw-w64-x86_64-qt5alst-5.13.2-1-any.pkg.tar.xz'
     pacman --noconfirm -U *.tar.xz
 popd
 rm -rf qtpkg
@@ -41,7 +41,7 @@ rm -rf qtpkg
 #
 mkdir megatools
 pushd megatools
-    wget https://megatools.megous.com/builds/experimental/megatools-1.11.0-git-20200503-win64.zip
+    wget -nv 'https://megatools.megous.com/builds/experimental/megatools-1.11.0-git-20200503-win64.zip'
     mkdir -p /usr/local/bin
 popd
 rm -rf megatools
