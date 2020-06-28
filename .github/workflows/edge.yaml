@@ -38,6 +38,36 @@ jobs:
         path: "*.AppImage"
 
 
+  build-windows:
+    runs-on: windows-2019
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+        submodules: recursive
+
+    - name: Set up MSYS2 PATH
+      run: echo ::add-path::C:\msys64\usr\bin\
+      shell: pwsh
+
+    - name: Build
+      run: setup/ci/build/build-windows.sh
+      shell: bash
+      env:
+        MSYSTEM: MINGW64
+        CHERE_INVOKING: 1
+        EXTERNAL_DATA_URL: ${{ secrets.EXTERNAL_DATA_URL }}
+        EXTERNAL_DATA_PASSWORD: ${{ secrets.EXTERNAL_DATA_PASSWORD }}
+
+    - name: Save
+      uses: actions/upload-artifact@v2
+      with:
+        name: release-windows
+        path: "*-setup.exe"
+
+
   release:
     runs-on: ubuntu-20.04
     container: "node:14"
