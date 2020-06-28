@@ -54,10 +54,11 @@ jobs:
 
     - name: Build
       run: setup/ci/build/build-windows.sh
-      shell: bash
+      shell: bash --login -eo pipefail "{0}"
       env:
         MSYSTEM: MINGW64
         CHERE_INVOKING: 1
+        MSYS2_PATH_TYPE: inherit
         EXTERNAL_DATA_URL: ${{ secrets.EXTERNAL_DATA_URL }}
         EXTERNAL_DATA_PASSWORD: ${{ secrets.EXTERNAL_DATA_PASSWORD }}
 
