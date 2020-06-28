@@ -16,7 +16,7 @@ set -x
 # Install the required packages
 #
 pacman --noconfirm -Su
-pacman --noconfirm -S \
+pacman --noconfirm --needed -S \
     mingw-w64-x86_64-qbs \
     unzip \
     p7zip \
