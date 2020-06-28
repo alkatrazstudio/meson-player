@@ -42,7 +42,7 @@ rm -rf qtpkg
 mkdir megatools
 pushd megatools
     wget -nv 'https://megatools.megous.com/builds/experimental/megatools-1.11.0-git-20200503-win64.zip'
-    mkdir -p /usr/local/bin
+    mv */megatools.exe /usr/bin/
 popd
 rm -rf megatools
 
