@@ -262,6 +262,8 @@ function build_windows
     cp "$MINGW_PREFIX/bin/libfreetype-6.dll" "$DIST_DIR/"
     cp "$MINGW_PREFIX/bin/libssl-1_1-x64.dll" "$DIST_DIR/"
     cp "$MINGW_PREFIX/bin/libcrypto-1_1-x64.dll" "$DIST_DIR/"
+    cp "$MINGW_PREFIX/bin/libbrotlidec.dll" "$DIST_DIR/"
+    cp "$MINGW_PREFIX/bin/libbrotlicommon.dll" "$DIST_DIR/"
 
     cp "$MINGW_PREFIX/bin/libglib-2.0-0.dll" "$DIST_DIR/"
     cp "$MINGW_PREFIX/bin/libgraphite2.dll" "$DIST_DIR/"
