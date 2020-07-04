@@ -69,6 +69,29 @@ jobs:
         path: "*-setup.exe"
 
 
+  build-osx:
+    runs-on: macos-10.15
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+        submodules: recursive
+
+    - name: Build
+      run: setup/ci/build/build-osx.sh
+      env:
+        EXTERNAL_DATA_URL: ${{ secrets.EXTERNAL_DATA_URL }}
+        EXTERNAL_DATA_PASSWORD: ${{ secrets.EXTERNAL_DATA_PASSWORD }}
+
+    - name: Save
+      uses: actions/upload-artifact@v2
+      with:
+        name: release-osx
+        path: "*.pkg"
+
+
   release:
     runs-on: ubuntu-20.04
     container: "node:14"
@@ -76,6 +99,7 @@ jobs:
     needs:
     - build-linux
     - build-windows
+    - build-osx
 
     steps:
     - name: Checkout
