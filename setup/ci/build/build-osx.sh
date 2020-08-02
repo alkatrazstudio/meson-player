@@ -18,7 +18,7 @@ set -x
 #
 # Install the required packages
 #
-brew install p7zip megatools
+brew install p7zip megatools pkg-config
 
 
 #
