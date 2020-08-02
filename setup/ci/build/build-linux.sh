@@ -3,6 +3,10 @@ set -ex
 cd "$(dirname -- "${BASH_SOURCE[0]}")/../../.."
 
 
+QT_URL="https://github.com/alkatrazstudio/qt5-build/releases/download/v5.14.2-17/qt5-v5.14.2-linux-x86_64.tar.xz"
+APPIMAGETOOL_URL="https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-x86_64.AppImage"
+
+
 #
 # Check that all vars are set
 #
@@ -48,7 +52,7 @@ sudo apt-get install -yq \
 #
 sudo mkdir -p /opt/qt
 pushd /opt/qt
-    curl -SsL 'https://github.com/alkatrazstudio/qt5-build/releases/download/v5.13.2-0/qt5-v5.13.2-linux-x86_64.tar.xz' | sudo tar -xJ
+    curl -SsL "$QT_URL" | sudo tar -xJ
 popd
 
 
@@ -75,7 +79,7 @@ rm -rf external.7z external
 #
 # Install appimagetool
 #
-curl -SsL -o ./appimagetool 'https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-x86_64.AppImage'
+curl -SsL -o ./appimagetool "$APPIMAGETOOL_URL"
 chmod u+x ./appimagetool
 sudo mv ./appimagetool /usr/local/bin/
 

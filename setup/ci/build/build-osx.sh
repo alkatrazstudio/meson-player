@@ -3,6 +3,9 @@ set -ex
 cd "$(dirname -- "${BASH_SOURCE[0]}")/../../.."
 
 
+QT_URL="https://github.com/alkatrazstudio/qt5-build/releases/download/v5.14.2-17/qt5-v5.14.2-osx-x86_64.tar.xz"
+
+
 #
 # Check that all vars are set
 #
@@ -23,7 +26,7 @@ brew install p7zip megatools
 #
 sudo mkdir -p /opt/qt
 pushd /opt/qt
-    curl -SsL 'https://github.com/alkatrazstudio/qt5-build/releases/download/v5.13.2-0/qt5-v5.13.2-osx-x86_64.tar.xz' | sudo tar -xJ
+    curl -SsL "$QT_URL" | sudo tar -xJ
 popd
 
 

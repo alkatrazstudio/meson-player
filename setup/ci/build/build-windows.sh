@@ -3,6 +3,10 @@ set -ex
 cd "$(dirname -- "${BASH_SOURCE[0]}")/../../.."
 
 
+QT_URL="https://github.com/alkatrazstudio/qt5-build/releases/download/v5.14.2-17/mingw-w64-x86_64-qt5alst-5.14.2-1-any.pkg.tar.zst"
+MEGATOOLS_URL="https://megatools.megous.com/builds/experimental/megatools-1.11.0-git-20200503-win64.zip"
+
+
 #
 # Check that all vars are set
 #
@@ -31,8 +35,8 @@ pacman --noconfirm --needed -S \
 #
 mkdir qtpkg
 pushd qtpkg
-    wget -nv 'https://github.com/alkatrazstudio/qt5-build/releases/download/v5.13.2-0/mingw-w64-x86_64-qt5alst-5.13.2-1-any.pkg.tar.xz'
-    pacman --noconfirm -U *.tar.xz
+    wget -nv "$QT_URL"
+    pacman --noconfirm -U *.pkg.tar.zst
 popd
 rm -rf qtpkg
 
@@ -42,7 +46,7 @@ rm -rf qtpkg
 #
 mkdir megatools
 pushd megatools
-    wget -nv 'https://megatools.megous.com/builds/experimental/megatools-1.11.0-git-20200503-win64.zip'
+    wget -nv "$MEGATOOLS_URL"
     unzip *.zip
     mv */megatools.exe /usr/bin/
 popd
