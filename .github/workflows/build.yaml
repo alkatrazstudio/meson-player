@@ -5,6 +5,8 @@ on:
   push:
     branches:
     - dev
+    tags:
+    - v*
 
 
 jobs:
@@ -94,23 +96,18 @@ jobs:
 
   release:
     runs-on: ubuntu-20.04
-    container: "node:14"
-
-    needs:
-    - build-linux
-    - build-windows
-    - build-osx
-
     steps:
     - name: Checkout
       uses: actions/checkout@v2
       with:
         persist-credentials: false
 
-    - name: Load the release binaries
+    - name: Download
       uses: actions/download-artifact@v2
+      with:
+        path: artifacts
 
     - name: Release
-      run: setup/ci/automation/release-edge.sh
+      run: .github/workflows/release.sh
       env:
-        ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
