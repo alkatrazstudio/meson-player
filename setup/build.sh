@@ -202,6 +202,16 @@ function build_linux
         /usr/local/lib/libbassmix.so \
         "$DIST_DIR/lib/"
 
+    # copy fallback libs
+    mkdir -p "$DIST_DIR/lib-fallback"
+    cp -a \
+        /usr/lib/x86_64-linux-gnu/libxcb-keysyms.so* \
+            "$DIST_DIR/lib-fallback/"
+
+    # patch RUNPATH
+    SYS_RUNPATH=/usr/local/lib/x86_64-linux-gnu:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu64:/usr/local/lib64:/lib64:/usr/lib64:/usr/local/lib:/lib:/usr/lib:/usr/x86_64-linux-gnu/lib64:/usr/x86_64-linux-gnu/lib
+    patchelf --set-rpath '$ORIGIN/lib:'"$SYS_RUNPATH"':$ORIGIN/lib-fallback' "$DIST_DIR/mesonplayer"
+
     # prepare AppImage links
     ln -sf "mesonplayer" "$DIST_DIR/AppRun"
     cp "$SETUP_DIR/AppImage/net.alkatrazstudio.mesonplayer.desktop" "$DIST_DIR/"

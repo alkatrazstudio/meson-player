@@ -44,7 +44,8 @@ sudo apt-get install -yq \
     zlib1g-dev \
     libxcb1-dev \
     libxcb-keysyms1-dev \
-    libgl-dev
+    libgl-dev \
+    patchelf
 
 
 #
