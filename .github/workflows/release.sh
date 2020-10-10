@@ -21,7 +21,7 @@ fi
 
 EDGE_TAG="edge-$BRANCH_NAME"
 EDGE_RELEASE_TITLE="[$BRANCH_NAME] Continuous build"
-EDGE_RELEASE_NOTES="This is an automated build from the latest changes in the `$BRANCH_NAME` branch. Stability is not guaranteed. Use at your own risk."
+EDGE_RELEASE_NOTES='This is an automated build from the latest changes in the `'"$BRANCH_NAME"'` branch. Stability is not guaranteed. Use at your own risk.'
 FILES=(artifacts/*/*)
 GH_VER=1.1.0
 
