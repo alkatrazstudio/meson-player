@@ -95,7 +95,13 @@ jobs:
 
 
   release:
+    needs:
+    - build-linux
+    - build-windows
+    - build-osx
+
     runs-on: ubuntu-20.04
+
     steps:
     - name: Checkout
       uses: actions/checkout@v2

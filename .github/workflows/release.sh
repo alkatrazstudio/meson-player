@@ -13,7 +13,7 @@ then
     TAG_NAME="${GITHUB_REF#refs/tags/}"
 fi
 
-if [[ -z $BRANCH_NAME || -z $TAG_NAME ]]
+if [[ -z $BRANCH_NAME && -z $TAG_NAME ]]
 then
     echo "Unknown GITHUB_REF: $GITHUB_REF"
     exit 1
