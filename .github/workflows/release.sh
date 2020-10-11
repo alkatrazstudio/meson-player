@@ -83,7 +83,7 @@ then
     TAG_ID="$(getTagId "$EDGE_TAG")"
     if [[ $TAG_ID ]]
     then
-        gh release delete edge -y || true
+        gh release delete "$EDGE_TAG" -y || true
         removeTagById "$TAG_ID"
     fi
     GH_FILES=()
