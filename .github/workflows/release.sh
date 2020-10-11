@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -ex
+shopt -s extglob
 cd "$(dirname -- "$(readlink -f -- "$0")")"
 cd ../..
 
