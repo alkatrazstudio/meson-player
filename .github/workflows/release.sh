@@ -85,7 +85,14 @@ then
         gh release delete edge -y || true
         removeTagById "$TAG_ID"
     fi
-    gh release create "$EDGE_TAG" "${FILES[@]}" -p -t "$EDGE_RELEASE_TITLE" -n "$EDGE_RELEASE_NOTES"
+    GH_FILES=()
+    for FILE in "${FILES[@]}"
+    do
+        FILENAME="$(basename -- "$FILE")"
+        FILE_TITLE="${FILENAME//-v+([[:digit:]])*([^-])-/-$EDGE_TAG-}"
+        GH_FILES+=("$FILE#$FILE_TITLE")
+    done
+    gh release create "$EDGE_TAG" "${GH_FILES[@]}" -p -t "$EDGE_RELEASE_TITLE" -n "$EDGE_RELEASE_NOTES"
 else
     echo "Releasing tag: $TAG_NAME"
     TAG_ID="$(getTagId "$TAG_NAME")"
