@@ -322,6 +322,9 @@ protected:
     int keyRepeatCounter;
     int keyRepeatKeyId;
 #endif
+#ifdef Q_OS_WIN
+    HWND messageWin;
+#endif
 
     QDialog* aboutDialog;
     QTextBrowser* aboutText;
