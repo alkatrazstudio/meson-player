@@ -386,12 +386,27 @@ int App::main()
     InstallApplicationEventHandler(&hotKeyHandler, 2, eventTypeSpec, this, &keyHooks);
 #endif
 #ifdef Q_OS_WIN
+    messageWin = CreateWindowExA(
+        0,
+        "Message",
+        "MesonPlayerMessageWindow",
+        0,
+        CW_USEDEFAULT,
+        CW_USEDEFAULT,
+        CW_USEDEFAULT,
+        CW_USEDEFAULT,
+        HWND_MESSAGE,
+        NULL,
+        GetModuleHandleA(NULL),
+        NULL
+    );
+
     RAWINPUTDEVICE rid;
     memset(&rid, 0, sizeof(rid));
     rid.usUsagePage = 0x01;
     rid.usUsage = 0x06;
     rid.dwFlags = RIDEV_INPUTSINK;
-    rid.hwndTarget = (HWND)getDummyWindow()->winId();
+    rid.hwndTarget = messageWin;
     if (RegisterRawInputDevices(&rid, 1, sizeof(rid)) == FALSE) {
         return -1;
     }
@@ -427,6 +442,10 @@ void App::onQuit()
 #ifdef Q_OS_OSX
     stopKeyRepeatTimer();
     RemoveEventHandler(keyHooks);
+#endif
+#ifdef Q_OS_WIN
+    if(messageWin != NULL)
+        DestroyWindow(messageWin);
 #endif
     if(hotkeysOn)
         unregisterControlHotKeys();
@@ -512,11 +531,14 @@ App::App(int& argc, char** argv) : CoreApp(argc, argv)
   ,keyRepeatCounter(0)
   ,keyRepeatKeyId(-1)
 #endif
+#ifdef Q_OS_WIN
+  ,messageWin(NULL)
+#endif
   ,aboutDialog(nullptr)
   ,aboutText(nullptr)
 {
     singleInstance = true;
-    createDummyWindow = true;
+    //createDummyWindow = true;
 }
 
 App::~App()
