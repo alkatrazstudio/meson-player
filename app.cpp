@@ -2370,8 +2370,6 @@ void App::setPlaybackMode(MSE_PlaylistPlaybackMode mode)
     // setChecked emits toggled(), but we're only listening for triggered(),
     // so we need to manually set playback mode here
     playlist->setPlaybackMode(mode);
-
-    settings.playbackMode = playlist->getPlaybackMode();
 }
 
 void App::initSound()
