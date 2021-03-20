@@ -18,7 +18,7 @@ set -x
 #
 # Install the required packages
 #
-brew install p7zip megatools pkg-config
+brew install p7zip megatools pkg-config qbs
 
 
 #
@@ -27,6 +27,7 @@ brew install p7zip megatools pkg-config
 sudo mkdir -p /opt/qt
 pushd /opt/qt
     curl -SsL "$QT_URL" | sudo tar -xJ
+    rm -f /opt/qt/qt5/bin/qbs*
 popd
 
 
