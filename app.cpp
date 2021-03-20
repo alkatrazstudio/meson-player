@@ -1846,16 +1846,17 @@ bool App::createTray()
     icoFilename = icoDir + "stop.png";
     CHECK(QFile::exists(icoFilename), Err::iconFileNotFound, icoFilename);
     icoStop = new QIcon(icoFilename);
+
+    tray = new QSystemTrayIcon(this);
     if(settings.balloons)
     {
         icoFilename = icoDir + "app.ico";
         CHECK(QFile::exists(icoFilename), Err::iconFileNotFound, icoFilename);
         icoApp = new QIcon(icoFilename);
+        trayPopup = new NotificationPopup(tray, dummyWindow);
+        trayPopup->setIcon(*icoApp);
     }
 
-    tray = new QSystemTrayIcon(this);
-    trayPopup = new NotificationPopup(tray, dummyWindow);
-    trayPopup->setIcon(*icoApp);
     trayMenu = new QMenu(dummyWindow);
     tray->setContextMenu(trayMenu);
     updateTrayIcon();
