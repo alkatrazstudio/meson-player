@@ -619,6 +619,7 @@ void App::mprisInit()
         sound->playNextValid();
         mixer->play();
         startSaveTimer();
+        showNotificationOnUserTrackChange();
     });
 
     connect(mpris, &AppMpris::quitRequested, []{
@@ -1910,6 +1911,8 @@ void App::onNewInstanceArgs()
                 setSoundPosition(_position);
         }
     }
+
+    showNotificationOnUserTrackChange();
 }
 
 bool App::createSoundObject()
@@ -2541,8 +2544,6 @@ void App::showTrayMessage(const QString &msg)
 {
     if(!tray)
         return;
-    if(!tray->isVisible())
-        return;
     if(!trayPopup)
         return;
 
@@ -2688,6 +2689,7 @@ void App::initSound()
                 updateTray();
                 if(!settings.loadOnly)
                     sound->play();
+                showNotificationOnUserTrackChange();
             }
             else
             {
@@ -2702,6 +2704,7 @@ void App::initSound()
                 }
                 if(settings.position >= 0)
                     setSoundPosition(settings.position);
+                showNotificationOnUserTrackChange();
                 return;
             }
         }
@@ -2711,12 +2714,14 @@ void App::initSound()
         if((settings.index >= 0) && (!playlist->getList()->isEmpty()))
         {
             sound->playValid(settings.index);
+            showNotificationOnUserTrackChange();
         }
         else
         {
             sound->playNextValid();
             if(settings.position >= 0)
                 setSoundPosition(settings.position);
+            showNotificationOnUserTrackChange();
             return;
         }
     }
