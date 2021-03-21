@@ -37,6 +37,7 @@ You can pass these parameters only if the application isn't running yet (except
 <hr id="balloons">
 <h2>balloons</h2>
 <p>Show balloon-style notifications on every event (track/volume change).</p>
+<p class="block warning">This option is deprecated! Use <code><a href="#notifications">notifications</a></code> instead.</p>
 <p><b>Valid values</b>: true, false</p>
 <p><b>Default</b>: true</p>
 
@@ -149,6 +150,15 @@ only makes sense when some filenames were also specified.</p>
 <p>Change a master volume by specified step.</p>
 <p><b>Valid values</b>: any value in range [0;100]</p>
 <p><b>Default</b>: 5</p>
+
+<hr id="notifications">
+<h2>notifications</h2>
+<p>Show a notification on some events (track/volume change, etc) near the tray icon.
+Notifications are not shown if the tray icon is hidden via <code>tray-icon</code> parameter).</p>
+<p>If <code>false</code> then no notifications are ever shown.
+If <code>true</code> then the notifications are shown unless a specific <code>notifications-*</code> parameter is set to <code>false</code></p>.
+<p><b>Valid values</b>: true, false</p>
+<p><b>Default</b>: true</p>
 
 <hr id="playback-mode">
 <h2>playback-mode</h2>

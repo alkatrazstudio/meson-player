@@ -932,6 +932,11 @@ bool App::loadSettings()
     return true;
 }
 
+void App::showBalloonsDeprecationWarning()
+{
+    qWarning() << "\"balloons\" setting is deprecated, use \"notifications\" setting instead.";
+}
+
 void App::loadConfig(const QString &filename)
 {
     if(!QFile::exists(filename))
@@ -947,7 +952,18 @@ void App::loadConfig(const QString &filename)
         settings.autoResume = ini->value("auto-resume", false).toBool();
 
     if(ini->contains("balloons"))
+    {
         settings.balloons = ini->value("balloons", true).toBool();
+        settings.notifications = settings.balloons;
+        showBalloonsDeprecationWarning();
+    }
+
+    if(ini->contains("notifications"))
+    {
+        settings.notifications = ini->value("notifications", true).toBool();
+        settings.balloons = settings.notifications;
+    }
+
     if(ini->contains("buffer-length"))
     {
         uint _val = ini->value("buffer-length", 500).toUInt(&ok);
@@ -1176,8 +1192,18 @@ void App::parseCommandLine()
                 if(paramName == "balloons")
                 {
                     settings.balloons = (paramValue != "0");
+                    settings.notifications = settings.balloons;
+                    showBalloonsDeprecationWarning();
                     continue;
                 }
+
+                if(paramName == "notifications")
+                {
+                    settings.notifications = (paramValue != "0");
+                    settings.balloons = settings.notifications;
+                    continue;
+                }
+
                 if(paramName == "buffer-length")
                 {
                     uint _val = paramValue.toUInt(&ok);
@@ -2004,7 +2030,7 @@ bool App::createTray()
     icoStop = new QIcon(icoFilename);
 
     tray = new QSystemTrayIcon(this);
-    if(settings.balloons)
+    if(settings.notifications)
     {
         icoFilename = icoDir + "app.ico";
         CHECK(QFile::exists(icoFilename), Err::iconFileNotFound, icoFilename);
@@ -2349,7 +2375,7 @@ bool App::unregisterAppCommandHotKeys()
     return unregisterHotKeys(hotKeysApp);
 }
 
-void App::updateTray(bool showBalloon, bool showTime)
+void App::updateTray(bool showNotification, bool showTime)
 {
     startSaveTimer();
 
@@ -2396,7 +2422,7 @@ void App::updateTray(bool showBalloon, bool showTime)
     }
 
     tray->setToolTip(iTip);
-    if(showBalloon)
+    if(showNotification)
     {
         if(showTime)
         {
@@ -2414,7 +2440,7 @@ void App::showTrayMessage(const QString &msg)
         return;
     if(!tray->isVisible())
         return;
-    if(!settings.balloons)
+    if(!trayPopup)
         return;
 
     QString s = qCoreApp->applicationDisplayName() + " ["+curVol+"]";

@@ -65,7 +65,8 @@ struct Settings {
     bool autoResume = false;
     quint8 volumeStep = 5;
     bool unlimitedPlaylists = true;
-    bool balloons = true;
+    bool balloons = true; // deprecated
+    bool notifications = true;
     quint16 typeTimeout = 1000;
     bool shortCaptions = false;
     quint32 frequency = 44100;
@@ -148,6 +149,7 @@ protected:
     virtual int main();
     virtual void onQuit();
 
+    void showBalloonsDeprecationWarning();
     bool loadSettings();
     void loadConfig(const QString& filename);
     void parseCommandLine();
@@ -169,7 +171,7 @@ protected:
     bool unregisterAppCommandHotKeys();
 
     QString hotkeyToString(const HotKeyInfo &info);
-    void updateTray(bool showBalloon = true, bool showTime = false);
+    void updateTray(bool showNotification = true, bool showTime = false);
     void showTrayMessage(const QString& msg);
     void showMasterVolumeInfo();
     void updateVolumeLabel();
