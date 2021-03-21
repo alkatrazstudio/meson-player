@@ -213,6 +213,11 @@ protected:
     void timerEvent(QTimerEvent* event);
     void showNotificationOnUserTrackChange();
 
+    bool createEmptyUserSettingsFileIfNeeded();
+    void viewFile(const QString& filename);
+    void showDir(const QString& dirname);
+    void showFile(const QString& filename);
+
     static QString errorCodeToString(Err code);
     static QString errorDataToString(Err errorCode, const void *data);
 
@@ -251,6 +256,8 @@ protected:
     Settings settings;
     QList<PlaylistSource> cmdPlaylist;
     QString appDir;
+    QString globalSettingsFilename;
+    QString userSettingsFilename;
     QSystemTrayIcon* tray;
     NotificationPopup* trayPopup;
     QMenu* trayMenu;

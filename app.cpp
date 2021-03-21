@@ -486,6 +486,8 @@ App::App(int& argc, char** argv) : CoreApp(argc, argv)
   ,exitNow(false)
   ,settingsDir(QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first()+"/."+qCoreApp->applicationName()+"/")
   ,appDir(applicationDirPath()+"/")
+  ,globalSettingsFilename(appDir+"settings.ini")
+  ,userSettingsFilename(settingsDir+"settings.ini")
   ,tray(nullptr)
   ,trayPopup(nullptr)
   ,player(nullptr)
@@ -663,8 +665,7 @@ void App::onActionPlaylists()
     {
         CHECKV(dir.mkdir(dirname), Err::createDir, dirname);
     }
-    path = QDir::toNativeSeparators(dirname);
-    QDesktopServices::openUrl(QUrl::fromLocalFile(path));
+    showDir(dirname);
 }
 
 void App::onActionHotkeys(bool checked)
@@ -676,19 +677,56 @@ void App::onActionHotkeys(bool checked)
     updateTray(false);
 }
 
-void App::onActionCurrentFile()
+bool App::createEmptyUserSettingsFileIfNeeded()
 {
-    if(playlist->getIndex() < 0)
-        return;
-    if(lastTrackData.filename.isEmpty())
-        return;
-    MSE_SoundChannelType channelType = player->typeByFilename(lastTrackData.filename);
-    if((channelType == mse_sctUnknown) || (channelType == mse_sctRemote))
-        return;
-    if(!QFile::exists(lastTrackData.filename))
-        return;
+    QFile f(userSettingsFilename);
+    if(f.exists())
+        return true;
 
-    QString filename = QDir::toNativeSeparators(lastTrackData.filename);
+    if(!f.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        showTrayMessage(tr("Cannot create %1").arg(userSettingsFilename));
+        return false;
+    }
+
+    if(!f.write("[config]\n"))
+        showTrayMessage(tr("Cannot write to %1").arg(userSettingsFilename));
+
+    return true;
+}
+
+void App::viewFile(const QString& filename)
+{
+    if(!QFile::exists(filename))
+    {
+        showTrayMessage(tr("File not found: %1").arg(filename));
+        return;
+    }
+
+    QString path = QDir::toNativeSeparators(filename);
+    QDesktopServices::openUrl(QUrl::fromLocalFile(path));
+}
+
+void App::showDir(const QString& dirname)
+{
+    QDir dir(dirname);
+    if(!dir.exists())
+    {
+        showTrayMessage(tr("Directory not found: %1").arg(dirname));
+        return;
+    }
+
+    QString path = QDir::toNativeSeparators(dirname);
+    QDesktopServices::openUrl(QUrl::fromLocalFile(path));
+}
+
+void App::showFile(const QString& filename)
+{
+    if(!QFile::exists(filename))
+    {
+        showTrayMessage(tr("File not found: %1").arg(filename));
+        return;
+    }
 
 #ifdef Q_OS_LINUX
     // based on qBittorrent function
@@ -721,6 +759,22 @@ void App::onActionCurrentFile()
     args << "/select," << filename;
     QProcess::startDetached("explorer", args);
 #endif
+}
+
+void App::onActionCurrentFile()
+{
+    if(playlist->getIndex() < 0)
+        return;
+    if(lastTrackData.filename.isEmpty())
+        return;
+    MSE_SoundChannelType channelType = player->typeByFilename(lastTrackData.filename);
+    if((channelType == mse_sctUnknown) || (channelType == mse_sctRemote))
+        return;
+    if(!QFile::exists(lastTrackData.filename))
+        return;
+
+    QString filename = QDir::toNativeSeparators(lastTrackData.filename);
+    showFile(filename);
 }
 
 void App::onActionCloseFile()
@@ -798,9 +852,8 @@ void App::onNativeEvent(void *event, bool &stopPropagation)
 
 bool App::loadSettings()
 {
-    QString confFilename = "settings.ini";
-    loadConfig(appDir+confFilename);
-    loadConfig(settingsDir+confFilename);
+    loadConfig(globalSettingsFilename);
+    loadConfig(userSettingsFilename);
     parseCommandLine();
 
 #ifdef DEBUG_MODE
@@ -2111,6 +2164,16 @@ bool App::createTray()
     actionHotkeys->setCheckable(true);
     actionHotkeys->setChecked(hotkeysOn);
     connect(actionHotkeys, SIGNAL(triggered(bool)), SLOT(onActionHotkeys(bool)));
+
+    auto menuSettings = trayMenu->addMenu(tr("Settings"));
+    connect(menuSettings->addAction(tr("Open settings file")), &QAction::triggered, [=]{
+        if(createEmptyUserSettingsFileIfNeeded())
+            viewFile(userSettingsFilename);
+    });
+    connect(menuSettings->addAction(tr("Show settings location")), &QAction::triggered, [=]{
+        if(createEmptyUserSettingsFileIfNeeded())
+            showFile(userSettingsFilename);
+    });
 
     actionCurrentFile = trayMenu->addAction(tr("Current File"));
     connect(actionCurrentFile, SIGNAL(triggered()), SLOT(onActionCurrentFile()));
