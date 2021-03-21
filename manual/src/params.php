@@ -156,7 +156,7 @@ only makes sense when some filenames were also specified.</p>
 <p>Show a notification on some events (track/volume change, etc) near the tray icon.
 Notifications are not shown if the tray icon is hidden via <code>tray-icon</code> parameter).</p>
 <p>If <code>false</code> then no notifications are ever shown.
-If <code>true</code> then the notifications are shown unless a specific <code>notifications-*</code> parameter is set to <code>false</code></p>.
+If <code>true</code> then the notifications are shown unless a specific <code>notifications-*</code> parameter is set to <code>false</code>.</p>
 <p><b>Valid values</b>: true, false</p>
 <p><b>Default</b>: true</p>
 
