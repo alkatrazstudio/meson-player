@@ -160,6 +160,13 @@ If <code>true</code> then the notifications are shown unless a specific <code>no
 <p><b>Valid values</b>: true, false</p>
 <p><b>Default</b>: true</p>
 
+<hr id="notifications-seek">
+<h2>notifications-seek</h2>
+<p>Show a notification when seeking the track (fast-forward or rewind).</p>
+<p>Also, see <a href="#notifications"><code>notifications</code></a> parameter.</p>
+<p><b>Valid values</b>: true, false</p>
+<p><b>Default</b>: true</p>
+
 <hr id="notifications-track-changed">
 <h2>notifications-track-changed</h2>
 <p>Show a notification when the current track changes.</p>

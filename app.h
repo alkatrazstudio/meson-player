@@ -76,6 +76,7 @@ struct Settings {
     ChangeTrackNotifications notificationsTrackChanged = ChangeTrackNotifications::always;
     bool notificationsTrackVolume = true;
     bool notificationsSystemVolume = true;
+    bool notificationsSeek = true;
     quint16 typeTimeout = 1000;
     bool shortCaptions = false;
     quint32 frequency = 44100;

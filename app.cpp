@@ -1040,6 +1040,9 @@ void App::loadConfig(const QString &filename)
     if(ini->contains("notifications-system-volume"))
         settings.notificationsSystemVolume = ini->value("notifications-system-volume", true).toBool();
 
+    if(ini->contains("notifications-seek"))
+        settings.notificationsSeek = ini->value("notifications-seek", true).toBool();
+
     if(ini->contains("buffer-length"))
     {
         uint _val = ini->value("buffer-length", 500).toUInt(&ok);
@@ -1295,6 +1298,12 @@ void App::parseCommandLine()
                 if(paramName == "notifications-track-volume")
                 {
                     settings.notificationsTrackVolume = (paramValue != "0");
+                    continue;
+                }
+
+                if(paramName == "notifications-seek")
+                {
+                    settings.notificationsSeek = (paramValue != "0");
                     continue;
                 }
 
@@ -3611,7 +3620,7 @@ void App::setSoundPosition(double secs)
         return;
     mixer->stop();
     sound->setPosition(secs);
-    updateTray(true, true);
+    updateTray(settings.notificationsSeek, true);
     mixer->play();
 }
 
