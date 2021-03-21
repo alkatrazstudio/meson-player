@@ -2555,6 +2555,8 @@ void App::showTrayMessage(const QString &msg)
         return;
     if(!trayPopup)
         return;
+    if(!tray->isVisible())
+        return;
 
     QString s = qCoreApp->applicationDisplayName() + " ["+curVol+"]";
     trayPopup->show(s, msg, settings.popupDuration * 1000, tray);
@@ -2720,6 +2722,8 @@ void App::initSound()
     }
     if((sound->getType() == mse_sctUnknown) && (doPlay || !playlist->getList()->isEmpty()) && !settings.loadOnly)
     {
+        if(!tray->isVisible())
+            tray->show();
         if((settings.index >= 0) && (!playlist->getList()->isEmpty()))
         {
             sound->playValid(settings.index);
@@ -3423,7 +3427,7 @@ QString App::errorCodeToString(Err code)
 
 void App::showNotificationOnUserTrackChange()
 {
-    if(settings.notifications && settings.notificationsTrackChanged == ChangeTrackNotifications::interaction)
+    if(tray && trayPopup && settings.notifications && settings.notificationsTrackChanged == ChangeTrackNotifications::interaction)
         updateTray();
 }
 
