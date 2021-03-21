@@ -59,6 +59,12 @@
     #include <Carbon/Carbon.h>
 #endif
 
+enum class ChangeTrackNotifications {
+    always,
+    interaction,
+    never
+};
+
 struct Settings {
     bool autoNumlock = true;
     bool subdirs = true;
@@ -67,6 +73,9 @@ struct Settings {
     bool unlimitedPlaylists = true;
     bool balloons = true; // deprecated
     bool notifications = true;
+    ChangeTrackNotifications notificationsTrackChanged = ChangeTrackNotifications::always;
+    bool notificationsTrackVolume = true;
+    bool notificationsSystemVolume = true;
     quint16 typeTimeout = 1000;
     bool shortCaptions = false;
     quint32 frequency = 44100;
@@ -150,6 +159,7 @@ protected:
     virtual void onQuit();
 
     void showBalloonsDeprecationWarning();
+    ChangeTrackNotifications stringToTrackChangedNotificationsEnum(const QString &s);
     bool loadSettings();
     void loadConfig(const QString& filename);
     void parseCommandLine();
@@ -201,6 +211,7 @@ protected:
     void killSaveTimer();
     void execAppCommand(const QString& cmd);
     void timerEvent(QTimerEvent* event);
+    void showNotificationOnUserTrackChange();
 
     static QString errorCodeToString(Err code);
     static QString errorDataToString(Err errorCode, const void *data);

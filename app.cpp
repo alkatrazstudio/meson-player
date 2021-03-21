@@ -649,7 +649,7 @@ void App::onInfoChange()
     }
 
     updateLastTrackData();
-    updateTray();
+    updateTray(settings.notificationsTrackChanged == ChangeTrackNotifications::always);
 }
 
 void App::onActionPlaylists()
@@ -937,6 +937,15 @@ void App::showBalloonsDeprecationWarning()
     qWarning() << "\"balloons\" setting is deprecated, use \"notifications\" setting instead.";
 }
 
+ChangeTrackNotifications App::stringToTrackChangedNotificationsEnum(const QString &s)
+{
+    if(s == "interaction")
+        return ChangeTrackNotifications::interaction;
+    if(s == "never")
+        return ChangeTrackNotifications::never;
+    return ChangeTrackNotifications::always;
+}
+
 void App::loadConfig(const QString &filename)
 {
     if(!QFile::exists(filename))
@@ -963,6 +972,19 @@ void App::loadConfig(const QString &filename)
         settings.notifications = ini->value("notifications", true).toBool();
         settings.balloons = settings.notifications;
     }
+
+    if(ini->contains("notifications-track-changed"))
+    {
+        settings.notificationsTrackChanged = stringToTrackChangedNotificationsEnum(
+            ini->value("notifications-track-changed", true).toString()
+        );
+    }
+
+    if(ini->contains("notifications-track-volume"))
+        settings.notificationsTrackVolume = ini->value("notifications-track-volume", true).toBool();
+
+    if(ini->contains("notifications-system-volume"))
+        settings.notificationsSystemVolume = ini->value("notifications-system-volume", true).toBool();
 
     if(ini->contains("buffer-length"))
     {
@@ -1201,6 +1223,24 @@ void App::parseCommandLine()
                 {
                     settings.notifications = (paramValue != "0");
                     settings.balloons = settings.notifications;
+                    continue;
+                }
+
+                if(paramName == "notifications-track-changed")
+                {
+                    settings.notificationsTrackChanged = stringToTrackChangedNotificationsEnum(paramValue);
+                    continue;
+                }
+
+                if(paramName == "notifications-system-volume")
+                {
+                    settings.notificationsSystemVolume = (paramValue != "0");
+                    continue;
+                }
+
+                if(paramName == "notifications-track-volume")
+                {
+                    settings.notificationsTrackVolume = (paramValue != "0");
                     continue;
                 }
 
@@ -3304,6 +3344,12 @@ QString App::errorCodeToString(Err code)
     }
 }
 
+void App::showNotificationOnUserTrackChange()
+{
+    if(settings.notifications && settings.notificationsTrackChanged == ChangeTrackNotifications::interaction)
+        updateTray();
+}
+
 QString App::getCmd(const QString &arg)
 {
     if(arg.startsWith("--cmd-"))
@@ -3347,9 +3393,9 @@ void App::cmdPlay()
         else
         {
             sound->play();
-            updateTray();
         }
         mixer->play();
+        showNotificationOnUserTrackChange();
     }
 }
 
@@ -3383,6 +3429,7 @@ void App::cmdNextTrack(bool autoPlay)
         mixer->stop();
         sound->openNextValid();
     }
+    showNotificationOnUserTrackChange();
 }
 
 void App::cmdPrevTrack(bool autoPlay)
@@ -3398,6 +3445,7 @@ void App::cmdPrevTrack(bool autoPlay)
         mixer->stop();
         sound->openPrevValid();
     }
+    showNotificationOnUserTrackChange();
 }
 
 void App::cmdSeekForward()
@@ -3418,6 +3466,7 @@ void App::cmdNextDir()
 {
     sound->playFirstValidInNextDir();
     mixer->play();
+    showNotificationOnUserTrackChange();
 }
 
 void App::cmdPrevDir()
@@ -3436,6 +3485,7 @@ void App::cmdPrevDir()
             sound->play();
     }
     mixer->play();
+    showNotificationOnUserTrackChange();
 }
 
 void App::cmdVolUp()
@@ -3451,13 +3501,15 @@ void App::cmdVolDown()
 void App::cmdMVolUp()
 {
     player->changeMasterVolume(+mvolStepReal, true);
-    showMasterVolumeInfo();
+    if(settings.notificationsSystemVolume)
+        showMasterVolumeInfo();
 }
 
 void App::cmdMVolDown()
 {
     player->changeMasterVolume(-mvolStepReal, true);
-    showMasterVolumeInfo();
+    if(settings.notificationsSystemVolume)
+        showMasterVolumeInfo();
 }
 
 QString App::secsToTimeFormat(int secs)
@@ -3504,7 +3556,7 @@ void App::setSoundVolume(float val, bool snapToGrid)
     mpris->updateVolume();
 #endif
     updateVolumeLabel();
-    updateTray();
+    updateTray(settings.notificationsTrackVolume);
 }
 
 void App::updateTrayIcon()

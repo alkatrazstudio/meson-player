@@ -160,6 +160,32 @@ If <code>true</code> then the notifications are shown unless a specific <code>no
 <p><b>Valid values</b>: true, false</p>
 <p><b>Default</b>: true</p>
 
+<hr id="notifications-track-changed">
+<h2>notifications-track-changed</h2>
+<p>Show a notification when the current track changes.</p>
+<p>Also, see <a href="#notifications"><code>notifications</code></a> parameter.</p>
+<p><b>Valid values</b>:</p>
+<ul>
+<li>always - always show a notification when a track changes;</li>
+<li>interaction - show a notification when the current track changes, but only if it's explicitly done by a user;</li>
+<li>never - never show a notification when a track changes;</li>
+</ul>
+<p><b>Default</b>: always</p>
+
+<hr id="notifications-system-volume">
+<h2>notifications-change-track</h2>
+<p>Show a notification when the system volume is changed.</p>
+<p>Also, see <a href="#notifications"><code>notifications</code></a> parameter.</p>
+<p><b>Valid values</b>: true, false</p>
+<p><b>Default</b>: true</p>
+
+<hr id="notifications-track-volume">
+<h2>notifications-change-track</h2>
+<p>Show a notification when the track volume is changed.</p>
+<p>Also, see <a href="#notifications"><code>notifications</code></a> parameter.</p>
+<p><b>Valid values</b>: true, false</p>
+<p><b>Default</b>: true</p>
+
 <hr id="playback-mode">
 <h2>playback-mode</h2>
 <p>Set playback mode.</p>
