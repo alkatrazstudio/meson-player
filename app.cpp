@@ -939,10 +939,13 @@ void App::loadConfig(const QString &filename)
     QSettings* ini = new QSettings(filename, QSettings::IniFormat);
     ini->beginGroup("config");
     bool ok;
+
     if(ini->contains("auto-numlock"))
         settings.autoNumlock = ini->value("auto-numlock", true).toBool();
+
     if(ini->contains("auto-resume"))
         settings.autoResume = ini->value("auto-resume", false).toBool();
+
     if(ini->contains("balloons"))
         settings.balloons = ini->value("balloons", true).toBool();
     if(ini->contains("buffer-length"))
@@ -951,134 +954,169 @@ void App::loadConfig(const QString &filename)
         if(ok)
             settings.bufferLength = _val;
     }
+
     if(ini->contains("channels"))
     {
         uint _val = settings.nChannels = ini->value("channels", 2).toUInt(&ok);
         if(ok)
             settings.nChannels = _val;
     }
+
     if(ini->contains("close-on-stop"))
         settings.closeOnStop = ini->value("close-on-stop", true).toBool();
+
     if(ini->contains("device"))
     {
         int _val = ini->value("device", -1).toInt(&ok);
         if(ok)
             settings.device = _val;
     }
+
     if(ini->contains("frequency"))
     {
         uint _val = ini->value("frequency", 44100).toUInt(&ok);
         if(ok)
             settings.frequency = _val;
     }
+
     if(ini->contains("log"))
         settings.logErrors = ini->value("log", false).toBool();
+
     if(ini->contains("min-folder-length"))
     {
         uint _val = ini->value("min-folder-length", 5).toUInt(&ok);
         if(ok)
             settings.minFolderLength = _val;
     }
+
     if(ini->contains("mods-cmd"))
         settings.modsCmd = stringToModifiers(ini->value("mods-cmd", "").toString());
+
     if(ini->contains("mods-mm"))
         settings.modsMM = stringToModifiers(ini->value("mods-mm", "").toString());
+
     if(ini->contains("mods-mm2"))
         settings.modsMM2= stringToModifiers(ini->value("mods-mm2", "CTRL").toString());
+
     if(ini->contains("mods-load"))
         settings.modsLoad = stringToModifiers(ini->value("mods-load", "CTRL").toString());
+
     if(ini->contains("mods-save"))
         settings.modsSave = stringToModifiers(ini->value("mods-save", "ALT").toString());
+
     if(ini->contains("mpris"))
         settings.mpris = ini->value("mpris", false).toBool();
+
     if(ini->contains("mvol-step"))
     {
         float _val = ini->value("mvol-step", 5).toFloat(&ok);
         if(ok)
             settings.mvolStep = _val;
     }
+
     if(ini->contains("autoload-playlists"))
         settings.playlistsAutoload = ini->value("autoload-playlists", false).toBool();
+
     if(ini->contains("playlists-type"))
     {
         MSE_PlaylistFormatType _val = MSE_Playlist::typeByName(ini->value("playlists-type", "M3U").toString());
         if(_val != mse_pftUnknown)
             settings.playlistsType = _val;
     }
+
     if(ini->contains("popup-duration"))
     {
         uint _val = ini->value("popup-duration", 5).toUInt(&ok);
         if(ok)
             settings.popupDuration = _val;
     }
+
     if(ini->contains("proxy"))
         settings.proxy = ini->value("proxy").toString();
+
     if(ini->contains("sample-interpolation"))
     {
         MSE_SoundSampleInterpolation _val = MSE_Sound::sampleInterpolationFromString(ini->value("sample-interpolation").toString(), &ok);
         if(ok)
             settings.sampleInterpolation = _val;
     }
+
     if(ini->contains("sample-ramping"))
     {
         MSE_SoundSampleRamping _val = MSE_Sound::sampleRampingFromString(ini->value("sample-ramping").toString(), &ok);
         if(ok)
             settings.sampleRamping = _val;
     }
+
     if(ini->contains("sample-ramping"))
     {
         MSE_SoundSampleType _val = MSE_Sound::sampleTypeFromString(ini->value("sample-type").toString(), &ok);
         if(ok)
             settings.sampleType = _val;
     }
+
     if(ini->contains("short-captions"))
         settings.shortCaptions = ini->value("short-captions", false).toBool();
+
     if(ini->contains("shoutcast-playlists"))
         settings.shoutcastPlaylists = ini->value("shoutcast-playlists", true).toBool();
+
     if(ini->contains("subdirs"))
         settings.subdirs = ini->value("subdirs", true).toBool();
+
     if(ini->contains("surround-mode"))
     {
         MSE_SoundSurroundMode _val = MSE_Sound::surroundModeFromString(ini->value("surround-mode").toString(), &ok);
         if(ok)
             settings.surroundMode = _val;
     }
+
     if(ini->contains("system-playlists"))
         settings.systemPlaylists = ini->value("system-commands", true).toBool();
+
     if(ini->contains("tracker-emulation"))
     {
         MSE_SoundTrackerEmulation _val = MSE_Sound::trackerEmulationFromString(ini->value("tracker-emulation").toString(), &ok);
         if(ok)
             settings.trackerEmulation = _val;
     }
+
     if(ini->contains("tray-icon"))
         settings.trayIcon = ini->value("tray-icon", true).toBool();
+
     if(ini->contains("type-timeout"))
     {
         uint _val = ini->value("type-timeout", 1000).toUInt(&ok);
         if(ok)
             settings.typeTimeout = _val;
     }
+
     if(ini->contains("unlimited-playlists"))
         settings.unlimitedPlaylists = ini->value("unlimited-playlists", true).toBool();
+
     if(ini->contains("update-period"))
     {
         uint _val = ini->value("update-period", 100).toUInt(&ok);
         if(ok)
             settings.updatePeriod = _val;
     }
+
     if(ini->contains("use-8bits"))
         settings.use8Bits = ini->value("use-8bits", false).toBool();
+
     if(ini->contains("use-default-device"))
         settings.useDefaultDevice = ini->value("use-default-device", true).toBool();
+
     if(ini->contains("use-software"))
         settings.useSoftware = ini->value("use-software", false).toBool();
+
     if(ini->contains("volume-step"))
     {
         uint _val = ini->value("volume-step", 5).toUInt(&ok);
         if(ok)
             settings.volumeStep = _val;
     }
+
     ini->endGroup();
     delete ini;
 }
@@ -1123,92 +1161,140 @@ void App::parseCommandLine()
                         paramValue = "0";
                 }
 
-                if(paramName == "auto-numlock"){
-                    settings.autoNumlock = (paramValue != "0");continue;
-                }else
-                if(paramName == "auto-resume"){
-                    settings.autoResume = (paramValue == "1");continue;
-                }else
-                if(paramName == "balloons"){
-                    settings.balloons = (paramValue != "0");continue;
-                }else
+                if(paramName == "auto-numlock")
+                {
+                    settings.autoNumlock = (paramValue != "0");
+                    continue;
+                }
+
+                if(paramName == "auto-resume")
+                {
+                    settings.autoResume = (paramValue == "1");
+                    continue;
+                }
+
+                if(paramName == "balloons")
+                {
+                    settings.balloons = (paramValue != "0");
+                    continue;
+                }
                 if(paramName == "buffer-length")
                 {
                     uint _val = paramValue.toUInt(&ok);
                     if(ok)
                         settings.bufferLength = _val;
                     continue;
-                }else
-                if(paramName == "channels"){
+                }
+
+                if(paramName == "channels")
+                {
                     uint _val = paramValue.toUInt(&ok);
                     if(!ok)
                         settings.nChannels = _val;
                     continue;
-                }else
-                if(paramName == "close-on-stop"){
-                    settings.closeOnStop = (paramValue != "0");continue;
-                }else
+                }
+
+                if(paramName == "close-on-stop")
+                {
+                    settings.closeOnStop = (paramValue != "0");
+                    continue;
+                }
+
                 if(paramName == "device")
                 {
                     int _val = paramValue.toInt(&ok);
                     if(ok)
                         settings.device = _val;
                     continue;
-                }else
+                }
+
                 if(paramName == "frequency")
                 {
                     uint _val = paramValue.toUInt(&ok);
                     if(ok)
                         settings.frequency = _val;
                     continue;
-                }else
+                }
+
                 if(paramName == "index"){
                     uint _index = paramValue.toUInt(&ok);
                     if(!ok)
                         settings.index = _index;
                     continue;
-                }else
-                if(paramName == "load-only"){
-                    settings.loadOnly = (paramValue != "0");continue;
-                }else
-                if(paramName == "log"){
-                    settings.logErrors = (paramValue == "1");continue;
-                }else
+                }
+
+                if(paramName == "load-only")
+                {
+                    settings.loadOnly = (paramValue != "0");
+                    continue;
+                }
+
+                if(paramName == "log")
+                {
+                    settings.logErrors = (paramValue == "1");
+                    continue;
+                }
+
                 if(paramName == "min-folder-length")
                 {
                     uint _val = paramValue.toUInt(&ok);
                     if(ok)
                         settings.minFolderLength = _val;
                     continue;
-                }else
-                if(paramName == "mods-cmd"){
-                    settings.modsCmd = stringToModifiers(paramValue);continue;
-                }else
-                if(paramName == "mods-mm"){
-                    settings.modsMM = stringToModifiers(paramValue);continue;
-                }else
-                if(paramName == "mods-mm2"){
-                    settings.modsMM2 = stringToModifiers(paramValue);continue;
-                }else
-                if(paramName == "mods-load"){
-                    settings.modsLoad = stringToModifiers(paramValue);continue;
-                }else
-                if(paramName == "mods-save"){
-                    settings.modsSave = stringToModifiers(paramValue);continue;
-                }else
-                if(paramName == "mpris"){
-                    settings.mpris = (paramValue != "0");continue;
-                }else
-                if(paramName == "mvol-step"){
+                }
+
+                if(paramName == "mods-cmd")
+                {
+                    settings.modsCmd = stringToModifiers(paramValue);
+                    continue;
+                }
+
+                if(paramName == "mods-mm")
+                {
+                    settings.modsMM = stringToModifiers(paramValue);
+                    continue;
+                }
+
+                if(paramName == "mods-mm2")
+                {
+                    settings.modsMM2 = stringToModifiers(paramValue);
+                    continue;
+                }
+
+                if(paramName == "mods-load")
+                {
+                    settings.modsLoad = stringToModifiers(paramValue);
+                    continue;
+                }
+
+                if(paramName == "mods-save")
+                {
+                    settings.modsSave = stringToModifiers(paramValue);
+                    continue;
+                }
+
+                if(paramName == "mpris")
+                {
+                    settings.mpris = (paramValue != "0");
+                    continue;
+                }
+
+                if(paramName == "mvol-step")
+                {
                     float _val = paramValue.toFloat(&ok);
                     if(ok)
                         settings.mvolStep = _val;
                     continue;
-                }else
-                if(paramName == "autoload-playlists"){
-                    settings.playlistsAutoload = (paramValue == "1");continue;
-                }else
-                if(paramName == "playback-mode"){
+                }
+
+                if(paramName == "autoload-playlists")
+                {
+                    settings.playlistsAutoload = (paramValue == "1");
+                    continue;
+                }
+
+                if(paramName == "playback-mode")
+                {
                     MSE_PlaylistPlaybackMode _mode = playlist->playbackModeFromString(paramValue, &ok);
                     if(ok)
                     {
@@ -1216,107 +1302,155 @@ void App::parseCommandLine()
                         settings.setPlaybackMode = true;
                     }
                     continue;
-                }else
-                if(paramName == "playlists-type"){
+                }
+
+                if(paramName == "playlists-type")
+                {
                     MSE_PlaylistFormatType _val = MSE_Playlist::typeByName(paramValue);
                     if(_val != mse_pftUnknown)
                         settings.playlistsType = _val;
                     continue;
-                }else
+                }
+
                 if(paramName == "popup-duration")
                 {
                     uint _val = paramValue.toUInt(&ok);
                     if(ok)
                         settings.popupDuration = _val;
                     continue;
-                }else
+                }
+
                 if(paramName == "position")
                 {
                     double _val = paramValue.toDouble(&ok);
                     if(ok)
                         settings.position = _val;
                     continue;
-                }else
-                if(paramName == "proxy"){
+                }
+
+                if(paramName == "proxy")
+                {
                     settings.proxy = paramValue;
-                }else
-                if(paramName == "sample-interpolation"){
+                }
+
+                if(paramName == "sample-interpolation")
+                {
                     MSE_SoundSampleInterpolation _val = MSE_Sound::sampleInterpolationFromString(paramValue, &ok);
                     if(ok)
                         settings.sampleInterpolation = _val;
                     continue;
-                }else
-                if(paramName == "sample-ramping"){
+                }
+
+                if(paramName == "sample-ramping")
+                {
                     MSE_SoundSampleRamping _val = MSE_Sound::sampleRampingFromString(paramValue, &ok);
                     if(ok)
                         settings.sampleRamping = _val;
                     continue;
-                }else
-                if(paramName == "sample-type"){
+                }
+
+                if(paramName == "sample-type")
+                {
                     MSE_SoundSampleType _val = MSE_Sound::sampleTypeFromString(paramValue, &ok);
                     if(ok)
                         settings.sampleType = _val;
                     continue;
-                }else
-                if(paramName == "short-captions"){
-                    settings.shortCaptions = (paramValue == "1");continue;
-                }else
-                if(paramName == "shoutcast-playlists"){
-                    settings.shoutcastPlaylists = (paramValue != "0");continue;
-                }else
-                if(paramName == "subdirs"){
-                    settings.subdirs = (paramValue != "0");continue;
-                }else
-                if(paramName == "surround-mode"){
+                }
+
+                if(paramName == "short-captions")
+                {
+                    settings.shortCaptions = (paramValue == "1");
+                    continue;
+                }
+
+                if(paramName == "shoutcast-playlists")
+                {
+                    settings.shoutcastPlaylists = (paramValue != "0");
+                    continue;
+                }
+
+                if(paramName == "subdirs")
+                {
+                    settings.subdirs = (paramValue != "0");
+                    continue;
+                }
+
+                if(paramName == "surround-mode")
+                {
                     MSE_SoundSurroundMode _val = MSE_Sound::surroundModeFromString(paramValue, &ok);
                     if(ok)
                         settings.surroundMode = _val;
                     continue;
-                }else
-                if(paramName == "system-playlists"){
-                    settings.systemPlaylists = (paramValue != "0");continue;
-                }else
-                if(paramName == "tracker-emulation"){
+                }
+
+                if(paramName == "system-playlists")
+                {
+                    settings.systemPlaylists = (paramValue != "0");
+                    continue;
+                }
+
+                if(paramName == "tracker-emulation")
+                {
                     MSE_SoundTrackerEmulation _val = MSE_Sound::trackerEmulationFromString(paramValue, &ok);
                     if(ok)
                         settings.trackerEmulation = _val;
                     continue;
-                }else
-                if(paramName == "tray-icon"){
-                    settings.trayIcon = (paramValue != "0");continue;
-                }else
+                }
+
+                if(paramName == "tray-icon")
+                {
+                    settings.trayIcon = (paramValue != "0");
+                    continue;
+                }
+
                 if(paramName == "type-timeout")
                 {
                     uint _val = paramValue.toUInt(&ok);
                     if(ok)
                         settings.typeTimeout = _val;
                     continue;
-                }else
-                if(paramName == "unlimited-playlists"){
-                    settings.unlimitedPlaylists = (paramValue == "1");continue;
-                }else
+                }
+
+                if(paramName == "unlimited-playlists")
+                {
+                    settings.unlimitedPlaylists = (paramValue == "1");
+                    continue;
+                }
+
                 if(paramName == "update-period")
                 {
                     uint _val = paramValue.toUInt(&ok);
                     if(ok)
                         settings.updatePeriod = _val;
                     continue;
-                }else
-                if(paramName == "use-8bits"){
-                    settings.use8Bits = (paramValue == "1");continue;
-                }else
-                if(paramName == "use-default-device"){
-                    settings.useDefaultDevice = (paramValue != "0");continue;
-                }else
-                if(paramName == "use-software"){
-                    settings.useSoftware = (paramValue == "1");continue;
-                }else
-                if(paramName == "volume"){
+                }
+
+                if(paramName == "use-8bits")
+                {
+                    settings.use8Bits = (paramValue == "1");
+                    continue;
+                }
+
+                if(paramName == "use-default-device")
+                {
+                    settings.useDefaultDevice = (paramValue != "0");
+                    continue;
+                }
+
+                if(paramName == "use-software")
+                {
+                    settings.useSoftware = (paramValue == "1");
+                    continue;
+                }
+
+                if(paramName == "volume")
+                {
                     uint _val = paramValue.toUInt(&ok);
                     if(!ok)
                         settings.volume = _val;
                     continue;
-                }else
+                }
+
                 if(paramName == "volume-step")
                 {
                     uint _val = paramValue.toUInt(&ok);

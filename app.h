@@ -59,7 +59,7 @@
     #include <Carbon/Carbon.h>
 #endif
 
-typedef struct {
+struct Settings {
     bool autoNumlock = true;
     bool subdirs = true;
     bool autoResume = false;
@@ -104,14 +104,14 @@ typedef struct {
     int bufferLength = 500;
     double position = -1;
     bool mpris = true;
-} Settings;
+};
 
-typedef struct {
+struct PlaylistSource {
     MSE_SourceLoadFlags loadFlags;
     QString source;
-} PlaylistSource;
+};
 
-typedef struct {
+struct HotKeyInfo {
     int id;
     int nKey;
     int nMod;
@@ -120,7 +120,7 @@ typedef struct {
 #endif
     bool isRegistered;
     bool isDisabled;
-} HotKeyInfo;
+};
 
 typedef QList<HotKeyInfo> HotKeysInfo;
 

@@ -249,7 +249,7 @@ This keeps percussive sounds sharp, whereas normal ramping can slightly deaden t
 <p><b>Valid values</b>: true, false</p>
 <p><b>Default</b>: true</p>
 
-<hr id="surround-mode<">
+<hr id="surround-mode">
 <h2>surround-mode</h2>
 <p>Set surround mode. Only applies to the following music formats: mo3, it, xm, s3m, mtm, mod, umx, mdz, s3z, xmz, itz.</p>
 <p>Discarded if <code>use-mono</code> is set to true.</p>
