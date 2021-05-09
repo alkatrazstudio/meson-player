@@ -47,7 +47,7 @@ rm -rf qtpkg
 #
 mkdir -p /opt/icu
 pushd /opt/icu
-    curl -SsL  | tar -xJ
+    curl -SsL "$ICU_URL" | tar -xJ
     cp -a icu/. /mingw64/opt/qt5alst/.
 popd
 rm -rf /opt/icu
