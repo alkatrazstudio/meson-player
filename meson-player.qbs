@@ -76,6 +76,7 @@ Project {
         MesonSoundEngine.lastfm: true
         MesonSoundEngine.mpris: true
         MesonSoundEngine.mixer: true
+        MesonSoundEngine.icu: true
 
         Group {
             name: 'App'

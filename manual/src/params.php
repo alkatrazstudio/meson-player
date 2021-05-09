@@ -75,6 +75,19 @@ You can pass these parameters only if the application isn't running yet (except
 <p><b>Valid values</b>: 192000, 96000, 48000, 44100, 22050, 16000, 11025, 8000</p>
 <p><b>Default</b>: 44100</p>
 
+<hr id="icu">
+<h2>icu</h2>
+<p>Use ICU to detect a character set of the audio tags if they're not in UTF.</p>
+<p class="warning">Character set detection is at best an imprecise operation. The detection process will attempt to identify the charset that best matches the characteristics of the tags using some heuristics, but the process is partly statistical in nature, and the results can not be guaranteed to always be correct.</p>
+<p><b>Valid values</b>: true, false</p>
+<p><b>Default</b>: false</p>
+
+<hr id="icu-min-confidence">
+<h2>icu-min-confidence</h2>
+<p>When <a href="#index">using ICU</a> do not consider any codepages if the ICU confidence score for this codepage is lower than this parameter.</p>
+<p><b>Valid values</b>: any value in range [0;100]</p>
+<p><b>Default</b>: 0</p>
+
 <hr id="index">
 <h2>index</h2>
 <p>Sets a file number to play. The first filename has the index of zero.</p>

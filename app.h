@@ -115,6 +115,8 @@ struct Settings {
     int bufferLength = 500;
     double position = -1;
     bool mpris = true;
+    bool useICU = false;
+    int icuMinConfidence = 0;
 };
 
 struct PlaylistSource {

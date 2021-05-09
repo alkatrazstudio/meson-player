@@ -4,6 +4,7 @@ cd "$(dirname -- "${BASH_SOURCE[0]}")/../../.."
 
 
 QT_URL="https://github.com/alkatrazstudio/qt5-build/releases/download/v5.14.2-17/qt5-v5.14.2-osx-x86_64.tar.xz"
+ICU_URL="https://github.com/alkatrazstudio/icu-build/releases/download/v69.1-0/icu-osx.tar.xz"
 
 
 #
@@ -29,6 +30,17 @@ pushd /opt/qt
     curl -SsL "$QT_URL" | sudo tar -xJ
     rm -f /opt/qt/qt5/bin/qbs*
 popd
+
+
+#
+# Install ICU
+#
+sudo mkdir -p /opt/icu
+pushd /opt/icu
+    curl -SsL  | tar -xJ
+    cp -al icu/. /opt/qt/qt5/.
+popd
+sudo rm -rf /opt/icu
 
 
 #

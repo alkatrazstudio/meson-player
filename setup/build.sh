@@ -189,6 +189,9 @@ function build_linux
         "$QT_DIR"/lib/libmpris-qt5.so* \
         "$QT_DIR"/lib/libdbusextended-qt5.so* \
         "$QT_DIR"/lib/libquazip.so* \
+        "$QT_DIR"/lib/libicudata.so* \
+        "$QT_DIR"/lib/libicui18n.so* \
+        "$QT_DIR"/lib/libicuuc.so* \
             "$DIST_DIR/lib/"
 
     mkdir -p "$DIST_DIR/$QT_PLUGINS_DIR/platforms"
@@ -211,6 +214,8 @@ function build_linux
     # patch RUNPATH
     SYS_RUNPATH=/usr/local/lib/x86_64-linux-gnu:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu64:/usr/local/lib64:/lib64:/usr/lib64:/usr/local/lib:/lib:/usr/lib:/usr/x86_64-linux-gnu/lib64:/usr/x86_64-linux-gnu/lib
     patchelf --set-rpath '$ORIGIN/lib:'"$SYS_RUNPATH"':$ORIGIN/lib-fallback' "$DIST_DIR/mesonplayer"
+    patchelf --set-rpath '$ORIGIN' "$DIST_DIR"/lib/libicui18n.so.*.*
+    patchelf --set-rpath '$ORIGIN' "$DIST_DIR"/lib/libicuuc.so.*.*
 
     # prepare AppImage links
     ln -sf "mesonplayer" "$DIST_DIR/AppRun"
@@ -251,6 +256,10 @@ function build_windows
     cp "$QT_DIR/bin/Qt5Network.dll" "$DIST_DIR/"
     cp "$QT_DIR/bin/Qt5Widgets.dll" "$DIST_DIR/"
     cp "$QT_DIR/bin/Qt5Xml.dll" "$DIST_DIR/"
+
+    cp "$QT_DIR"/bin/icudt*.dll "$DIST_DIR/"
+    cp "$QT_DIR"/bin/icuin*.dll "$DIST_DIR/"
+    cp "$QT_DIR"/bin/icuuc*.dll "$DIST_DIR/"
 
     mkdir -p "$DIST_DIR/imageformats"
     cp "$QT_DIR/share/qt5/plugins/imageformats/qico.dll" "$DIST_DIR/imageformats/"
@@ -324,6 +333,11 @@ function build_osx
         \) -exec rm -rf {} +
         cp /usr/local/lib/libbass.dylib Frameworks/
         cp /usr/local/lib/libbassmix.dylib Frameworks/
+        cp -a \
+            "$QT_DIR"/lib/libicudata*.dylib \
+            "$QT_DIR"/lib/libicui18n*.dylib \
+            "$QT_DIR"/lib/libicuuc*.dylib \
+                Frameworks/
         find . -type d -empty -delete
 
         pushd MacOS

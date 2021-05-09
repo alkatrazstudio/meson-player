@@ -5,6 +5,7 @@ cd "$(dirname -- "${BASH_SOURCE[0]}")/../../.."
 
 QT_URL="https://github.com/alkatrazstudio/qt5-build/releases/download/v5.14.2-17/qt5-v5.14.2-linux-x86_64.tar.xz"
 APPIMAGETOOL_URL="https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-x86_64.AppImage"
+ICU_URL="https://github.com/alkatrazstudio/icu-build/releases/download/v69.1-0/icu-linux.tar.xz"
 
 
 #
@@ -55,6 +56,17 @@ sudo mkdir -p /opt/qt
 pushd /opt/qt
     curl -SsL "$QT_URL" | sudo tar -xJ
 popd
+
+
+#
+# Install ICU
+#
+sudo mkdir -p /opt/icu
+pushd /opt/icu
+    curl -SsL  | tar -xJ
+    cp -al icu/. /opt/qt/qt5/.
+popd
+sudo rm -rf /opt/icu
 
 
 #

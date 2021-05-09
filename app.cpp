@@ -1074,6 +1074,16 @@ void App::loadConfig(const QString &filename)
             settings.frequency = _val;
     }
 
+    if(ini->contains("icu"))
+        settings.useICU = ini->value("icu", false).toBool();
+
+    if(ini->contains("icu-min-confidence"))
+    {
+        int confidence = ini->value("icu-min-confidence", 0).toInt(&ok);
+        if(ok)
+            settings.icuMinConfidence = confidence;
+    }
+
     if(ini->contains("log"))
         settings.logErrors = ini->value("log", false).toBool();
 
@@ -1345,7 +1355,22 @@ void App::parseCommandLine()
                     continue;
                 }
 
-                if(paramName == "index"){
+                if(paramName == "icu")
+                {
+                    settings.useICU = (paramValue == "1");
+                    continue;
+                }
+
+                if(paramName == "icu-min-confidence")
+                {
+                    int _confidence = paramValue.toInt(&ok);
+                    if(ok)
+                        settings.icuMinConfidence = _confidence;
+                    continue;
+                }
+
+                if(paramName == "index")
+                {
                     uint _index = paramValue.toUInt(&ok);
                     if(!ok)
                         settings.index = _index;
@@ -1980,6 +2005,8 @@ bool App::createSoundObject()
     soundParams.trackerEmulation = settings.trackerEmulation;
     soundParams.useSoftware = settings.useSoftware;
     soundParams.decodeOnly = true;
+    soundParams.useICU = settings.useICU;
+    soundParams.icuMinConfidence = settings.icuMinConfidence;
     if(!sound->init(soundParams))
         return false;
     connect(sound, SIGNAL(onInfoChange()), SLOT(onInfoChange()));

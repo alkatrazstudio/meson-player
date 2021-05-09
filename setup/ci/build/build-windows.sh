@@ -4,6 +4,7 @@ cd "$(dirname -- "${BASH_SOURCE[0]}")/../../.."
 
 
 QT_URL="https://github.com/alkatrazstudio/qt5-build/releases/download/v5.14.2-17/mingw-w64-x86_64-qt5alst-5.14.2-1-any.pkg.tar.zst"
+ICU_URL="https://github.com/alkatrazstudio/icu-build/releases/download/v69.1-0/icu-msys.tar.xz"
 MEGATOOLS_URL="https://megatools.megous.com/builds/experimental/megatools-1.11.0-git-20200503-win64.zip"
 
 
@@ -39,6 +40,17 @@ pushd qtpkg
     pacman --noconfirm -U *.pkg.tar.zst
 popd
 rm -rf qtpkg
+
+
+#
+# Install ICU
+#
+mkdir -p /opt/icu
+pushd /opt/icu
+    curl -SsL  | tar -xJ
+    cp -a icu/. /mingw64/opt/qt5alst/.
+popd
+rm -rf /opt/icu
 
 
 #
