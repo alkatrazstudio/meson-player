@@ -1372,7 +1372,7 @@ void App::parseCommandLine()
                 if(paramName == "index")
                 {
                     uint _index = paramValue.toUInt(&ok);
-                    if(!ok)
+                    if(ok)
                         settings.index = _index;
                     continue;
                 }
