@@ -38,7 +38,7 @@ popd
 sudo mkdir -p /opt/icu
 pushd /opt/icu
     curl -SsL "$ICU_URL" | sudo tar -xJ
-    sudo cp -al icu/. /opt/qt/qt5/.
+    sudo cp -a icu/. /opt/qt/qt5/.
 popd
 sudo rm -rf /opt/icu
 
