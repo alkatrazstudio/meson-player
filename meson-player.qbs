@@ -113,6 +113,8 @@ Project {
             return libs
         }
 
+        cpp.libraryPaths: Common.libraryPaths
+
         Properties {
             condition: Common.isOSX
 
