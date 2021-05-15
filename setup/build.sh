@@ -333,11 +333,6 @@ function build_osx
         \) -exec rm -rf {} +
         cp /usr/local/lib/libbass.dylib Frameworks/
         cp /usr/local/lib/libbassmix.dylib Frameworks/
-        cp -a \
-            "$QT_DIR"/lib/libicudata*.dylib \
-            "$QT_DIR"/lib/libicui18n*.dylib \
-            "$QT_DIR"/lib/libicuuc*.dylib \
-                Frameworks/
         find . -type d -empty -delete
 
         pushd MacOS
