@@ -169,6 +169,7 @@ protected:
     void outputCmdResult(const QString &cmd, const QString &prefix = QString());
     void onNewInstanceArgs();
     bool createSoundObject();
+    bool createLfmObject();
     void tryCreateTray();
     bool createTray();
     void updateModeGroup(MSE_PlaylistPlaybackMode playbackMode);

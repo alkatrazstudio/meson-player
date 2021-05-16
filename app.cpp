@@ -1949,6 +1949,39 @@ void App::onNewInstanceArgs()
     showNotificationOnUserTrackChange();
 }
 
+bool App::createLfmObject()
+{
+#ifndef LFM_DECRYPT_KEY
+    return false;
+#else
+    QFileEx f(":/services/lastfm/data");
+    if(!f.open(QIODevice::ReadOnly))
+        return false;
+
+    MSE_LastfmInitParams lfmParams;
+    MSE_Lastfm::getDefaultInitParams(lfmParams);
+
+    SimpleCrypt crypt(LFM_DECRYPT_KEY);
+    QStringList lines = QString::fromUtf8(crypt.decryptToByteArray(f.readAll())).split(QStringLiteral("\n"));
+    if(lines.size() < 4)
+        return false;
+
+    bool ok;
+    quint64 cacheKey = lines[1].left(16).toULongLong(&ok, 16);
+    if(!ok)
+        return false;
+
+    lfmParams.cacheKey = cacheKey;
+    lfmParams.apiKey = lines[2].left(32);
+    lfmParams.sharedSecret = lines[3].left(32);
+    lfmParams.cacheFile = settingsDir+"lastfm.cache";
+    lfm = new MSE_Lastfm(sound);
+    lfm->init(&lfmParams);
+    connect(lfm, SIGNAL(onStateChange()), SLOT(onLfmChangeState()));
+    return true;
+#endif
+}
+
 bool App::createSoundObject()
 {
     qDebug() << "initializing sound engine";
@@ -2029,34 +2062,7 @@ bool App::createSoundObject()
 
     playlist->setPlaybackMode(mse_ppmAllLoop);
 
-    lfm = new MSE_Lastfm(sound);
-    MSE_LastfmInitParams lfmParams;
-    lfm->getDefaultInitParams(lfmParams);
-
-#ifdef LFM_DECRYPT_KEY
-    QFileEx f(":/services/lastfm/data");
-    if(f.open(QIODevice::ReadOnly))
-    {
-        try{
-            SimpleCrypt crypt(LFM_DECRYPT_KEY);
-            QStringList lines = QString::fromUtf8(crypt.decryptToByteArray(f.readAll())).split(QStringLiteral("\n"));
-            if(lines.size() < 4)
-                throw;
-            bool ok;
-            quint64 cacheKey = lines[1].left(16).toULongLong(&ok, 16);
-            if(!ok)
-                throw;
-            lfmParams.cacheKey = cacheKey;
-            lfmParams.apiKey = lines[2].left(32);
-            lfmParams.sharedSecret = lines[3].left(32);
-            lfmParams.cacheFile = settingsDir+"lastfm.cache";
-            lfm->init(&lfmParams);
-            connect(lfm, SIGNAL(onStateChange()), SLOT(onLfmChangeState()));
-        }catch(...){
-            // no Last.fm support
-        }
-    }
-#endif
+    createLfmObject();
 
     return true;
 }
@@ -2221,46 +2227,49 @@ bool App::createTray()
     connect(actionCloseFile, SIGNAL(triggered()), SLOT(onActionCloseFile()));
     actionCloseFile->setVisible(!settings.closeOnStop);
 
-    QMenu* menuLfm = trayMenu->addMenu(tr("Last.fm"));
-    if(!lfm->getInitParams().sharedSecret.isEmpty())
+    if(lfm)
     {
-        actionLfmLoginWeb = menuLfm->addAction(tr("Web login"));
-        connect(actionLfmLoginWeb, &QAction::triggered, [this](){
-            showLfmLoginNotification = true;
-            lfm->startWebAuth();
-        });
-        actionLfmLoginForm = menuLfm->addAction(tr("In-App login"));
-        connect(actionLfmLoginForm, &QAction::triggered, [this](){
-            LastfmPassForm::showForm([this](const QString& username, const QString& password){
+        QMenu* menuLfm = trayMenu->addMenu(tr("Last.fm"));
+        if(!lfm->getInitParams().sharedSecret.isEmpty())
+        {
+            actionLfmLoginWeb = menuLfm->addAction(tr("Web login"));
+            connect(actionLfmLoginWeb, &QAction::triggered, [this](){
                 showLfmLoginNotification = true;
-                lfm->startMobileAuth(username, password);
+                lfm->startWebAuth();
             });
-        });
-        actionLfmUser = menuLfm->addAction("");
-        connect(actionLfmUser, &QAction::triggered, [this](){
-            if(lfm->getState() == mse_lfmLoggedIn)
-            {
-                QString url(QStringLiteral("https://www.last.fm/user/"));
-                url.append(lfm->getUserName());
-                QDesktopServices::openUrl(url);
-            }
-            else
-            {
-                QDesktopServices::openUrl(QUrl("https://www.last.fm/"));
-            }
-        });
-        actionLfmLogout = menuLfm->addAction(tr("Log out"));
-        connect(actionLfmLogout, &QAction::triggered, [this](){
-            lfm->logout();
-            showTrayMessage(QStringLiteral("Last.fm: ")+tr("logged out"));
-            updateLfmMenu();
-        });
+            actionLfmLoginForm = menuLfm->addAction(tr("In-App login"));
+            connect(actionLfmLoginForm, &QAction::triggered, [this](){
+                LastfmPassForm::showForm([this](const QString& username, const QString& password){
+                    showLfmLoginNotification = true;
+                    lfm->startMobileAuth(username, password);
+                });
+            });
+            actionLfmUser = menuLfm->addAction("");
+            connect(actionLfmUser, &QAction::triggered, [this](){
+                if(lfm->getState() == mse_lfmLoggedIn)
+                {
+                    QString url(QStringLiteral("https://www.last.fm/user/"));
+                    url.append(lfm->getUserName());
+                    QDesktopServices::openUrl(url);
+                }
+                else
+                {
+                    QDesktopServices::openUrl(QUrl("https://www.last.fm/"));
+                }
+            });
+            actionLfmLogout = menuLfm->addAction(tr("Log out"));
+            connect(actionLfmLogout, &QAction::triggered, [this](){
+                lfm->logout();
+                showTrayMessage(QStringLiteral("Last.fm: ")+tr("logged out"));
+                updateLfmMenu();
+            });
 
-        updateLfmMenu();
-    }
-    if(menuLfm->isEmpty())
-    {
-        delete menuLfm;
+            updateLfmMenu();
+        }
+        if(menuLfm->isEmpty())
+        {
+            delete menuLfm;
+        }
     }
 
     QMenu* menuHelp = trayMenu->addMenu(tr("Help"));
