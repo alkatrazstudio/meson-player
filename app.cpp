@@ -1226,6 +1226,33 @@ void App::loadConfig(const QString &filename)
     delete ini;
 }
 
+QStringList App::getArgsForPassingToLocalServer()
+{
+    QStringList args = CoreApp::getArgsForPassingToLocalServer();
+
+    QStringList realArgs;
+
+    foreach(QString arg, args)
+    {
+        if(arg.startsWith("--"))
+        {
+            realArgs.append(arg);
+            continue;
+        }
+
+        QFileInfo f(arg);
+        if(!f.exists() || f.isAbsolute())
+        {
+            realArgs.append(arg);
+            continue;
+        }
+
+        realArgs.append(f.absoluteFilePath());
+    }
+
+    return realArgs;
+}
+
 void App::parseCommandLine()
 {
     bool ok;

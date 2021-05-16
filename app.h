@@ -165,9 +165,10 @@ protected:
     ChangeTrackNotifications stringToTrackChangedNotificationsEnum(const QString &s);
     bool loadSettings();
     void loadConfig(const QString& filename);
+    virtual QStringList getArgsForPassingToLocalServer() override;
     void parseCommandLine();
     void outputCmdResult(const QString &cmd, const QString &prefix = QString());
-    void onNewInstanceArgs();
+    virtual void onNewInstanceArgs();
     bool createSoundObject();
     bool createLfmObject();
     void tryCreateTray();
