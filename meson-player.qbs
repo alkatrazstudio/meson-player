@@ -66,7 +66,6 @@ Project {
         }
 
         CoreApp.singleInstanceKey: name
-        CoreApp.dummyWindow: true
         Common.appTitle: 'Meson Player'
         qbs.installPrefix: ''
         consoleApplication: ctrlProfile

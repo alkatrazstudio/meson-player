@@ -540,7 +540,7 @@ App::App(int& argc, char** argv) : CoreApp(argc, argv)
   ,aboutText(nullptr)
 {
     singleInstance = true;
-    //createDummyWindow = true;
+    setQuitOnLastWindowClosed(false);
 }
 
 App::~App()
@@ -2200,11 +2200,11 @@ bool App::createTray()
         icoFilename = icoDir + "app.ico";
         CHECK(QFile::exists(icoFilename), Err::iconFileNotFound, icoFilename);
         icoApp = new QIcon(icoFilename);
-        trayPopup = new NotificationPopup(tray, dummyWindow);
+        trayPopup = new NotificationPopup(tray);
         trayPopup->setIcon(*icoApp);
     }
 
-    trayMenu = new QMenu(dummyWindow);
+    trayMenu = new QMenu();
     tray->setContextMenu(trayMenu);
     updateTrayIcon();
 
