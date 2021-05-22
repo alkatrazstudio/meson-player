@@ -275,7 +275,7 @@ protected:
     bool showLfmLoginNotification;
     bool doPlay;
     QString lastFilename;
-    QStringList statePlaylist;
+    QList<MSE_PlaylistEntry> statePlaylist;
     bool hasInputFiles;
     bool hotkeysOn;
     bool appCommandHotkeysOn;

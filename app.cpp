@@ -614,7 +614,7 @@ void App::mprisInit()
         cmdStop();
         playlist->clear();
         clearLastTrackData();
-        playlist->addAnything(url.toString());
+        playlist->addAnything(MSE_PlaylistEntry(url.toString()));
         saveStateList();
         sound->playNextValid();
         mixer->play();
@@ -1943,7 +1943,7 @@ void App::onNewInstanceArgs()
         playlist->clear();
         clearLastTrackData();
         foreach(PlaylistSource src, cmdPlaylist)
-            playlist->addAnything(src.source, src.loadFlags);
+            playlist->addAnything(MSE_PlaylistEntry(src.source), src.loadFlags);
         cmdPlaylist.clear();
         saveStateList();
     }
@@ -2083,7 +2083,7 @@ bool App::createSoundObject()
     sound->setVolume(1);
 
     foreach(PlaylistSource src, cmdPlaylist)
-        playlist->addAnything(src.source, src.loadFlags);
+        playlist->addAnything(MSE_PlaylistEntry(src.source), src.loadFlags);
 
     cmdPlaylist.clear();
 
@@ -3244,7 +3244,7 @@ void App::loadPlaylist()
             QString url = "https://yp.shoutcast.com/sbin/tunein-station.pls?id="+playlistPrefix.mid(1);
             playlist->clear();
             clearLastTrackData();
-            playlist->addUrl(url);
+            playlist->addUrl(MSE_PlaylistEntry(url));
             saveStateList();
             mixer->stop();
             sound->playNextValid();
