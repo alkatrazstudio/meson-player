@@ -635,6 +635,27 @@ void App::onInfoChange()
     if(sound->getType() == mse_sctRemote)
     {
         curDir = sound->getTrackFilename();
+        if(settings.showRadioPlaylistTags)
+        {
+            const auto* curSource = sound->getPlaylist()->getCurrentSource();
+            if(curSource)
+            {
+                const MSE_SourceTags* tags = curSource->entry.tags.data();
+                if(tags)
+                {
+                    QStringList parts;
+                    if(!tags->trackArtist.isEmpty())
+                        parts.append(tags->trackArtist);
+                    if(!tags->trackAlbum.isEmpty())
+                        parts.append(tags->trackAlbum);
+                    if(!tags->trackTitle.isEmpty())
+                        parts.append(tags->trackTitle);
+                    parts.append(curDir);
+
+                    curDir = parts.join(" - ");
+                }
+            }
+        }
     }
     else
     {
@@ -1163,6 +1184,9 @@ void App::loadConfig(const QString &filename)
     if(ini->contains("short-captions"))
         settings.shortCaptions = ini->value("short-captions", false).toBool();
 
+    if(ini->contains("show-radio-playlist-tags"))
+        settings.showRadioPlaylistTags = ini->value("show-radio-playlist-tags", true).toBool();
+
     if(ini->contains("shoutcast-playlists"))
         settings.shoutcastPlaylists = ini->value("shoutcast-playlists", true).toBool();
 
@@ -1541,6 +1565,12 @@ void App::parseCommandLine()
                 if(paramName == "short-captions")
                 {
                     settings.shortCaptions = (paramValue == "1");
+                    continue;
+                }
+
+                if(paramName == "show-radio-playlist-tags")
+                {
+                    settings.showRadioPlaylistTags = (paramValue != "0");
                     continue;
                 }
 

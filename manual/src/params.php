@@ -299,6 +299,13 @@ This keeps percussive sounds sharp, whereas normal ramping can slightly deaden t
 <p><b>Valid values</b>: true, false</p>
 <p><b>Default</b>: false</p>
 
+<hr id="show-radio-playlist-tags">
+<h2>show-radio-playlist-tags</h2>
+<p>In addition to showing the URL of a radio stream, also show the information from playlist tags (title, artist, etc).</p>
+<p class="block warning">Tags are only fetched from M3U playlists as of now.</p>
+<p><b>Valid values</b>: true, false</p>
+<p><b>Default</b>: true</p>
+
 <hr id="subdirs">
 <h2>subdirs</h2>
 <p>Load music files recursively when a folder is specified via <a href="command.html">command line</a>.</p>
