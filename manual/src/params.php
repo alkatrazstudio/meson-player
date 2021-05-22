@@ -78,7 +78,7 @@ You can pass these parameters only if the application isn't running yet (except
 <hr id="icu">
 <h2>icu</h2>
 <p>Use ICU to detect a character set of the audio tags if they're not in UTF.</p>
-<p class="warning">Character set detection is at best an imprecise operation. The detection process will attempt to identify the charset that best matches the characteristics of the tags using some heuristics, but the process is partly statistical in nature, and the results can not be guaranteed to always be correct.</p>
+<p class="block warning">Character set detection is at best an imprecise operation. The detection process will attempt to identify the charset that best matches the characteristics of the tags using some heuristics, but the process is partly statistical in nature, and the results can not be guaranteed to always be correct.</p>
 <p><b>Valid values</b>: true, false</p>
 <p><b>Default</b>: false</p>
 
@@ -91,7 +91,7 @@ You can pass these parameters only if the application isn't running yet (except
 <hr id="index">
 <h2>index</h2>
 <p>Sets a file number to play. The first filename has the index of zero.</p>
-<p class="warning">This parameter can only be specified via <a href="command.html">command line</a> and
+<p class="block warning">This parameter can only be specified via <a href="command.html">command line</a> and
 only makes sense when some filenames were also specified.</p>
 <p>If there are filenames in command line as well, then this parameter will choose what file to play. If there were no filenames, then this parameter will change the current track to a track with the specified index in a current playlist.</p>
 <p><b>Valid values</b>: any positive integer</p>
@@ -105,7 +105,7 @@ only makes sense when some filenames were also specified.</p>
 <hr id="load-only">
 <h2>load-only</h2>
 <p>Whether to play or not to play the music after the music file is loaded.</p>
-<p class="warning">This parameter can only be specified via <a href="command.html">command line</a> and
+<p class="block warning">This parameter can only be specified via <a href="command.html">command line</a> and
 only makes sense when some filenames were also specified.</p>
 <p><b>Valid values</b>: true, false</p>
 <p><b>If not specified</b>: Auto-play music. The exact music file can be specified via
@@ -209,7 +209,7 @@ If <code>true</code> then the notifications are shown unless a specific <code>no
 <hr id="playback-mode">
 <h2>playback-mode</h2>
 <p>Set playback mode.</p>
-<p class="warning">This parameter can only be specified via <a href="command.html">command line</a>.</p>
+<p class="block warning">This parameter can only be specified via <a href="command.html">command line</a>.</p>
 <p><b>Valid values</b>:</p>
 <ul>
 <li>track_once - Play one track one time then stop;</li>
@@ -236,7 +236,7 @@ If <code>true</code> then the notifications are shown unless a specific <code>no
 <hr id="position">
 <h2>position</h2>
 <p>Sets a file position in seconds. If there are filenames in command line as well, then the first file that's going to be played will start from te specified position. If there were no filenames, then this parameter will change the position of currently playing file.</p>
-<p class="warning">This parameter can only be specified via <a href="command.html">command line</a> when the application is already running.</p>
+<p class="block warning">This parameter can only be specified via <a href="command.html">command line</a> when the application is already running.</p>
 <p><b>Valid values</b>: any positive floating point value (e.g. 12.5)</p>
 
 <hr id="proxy">
@@ -401,7 +401,7 @@ when you type the first digit of its ID.</p>
 <hr id="volume">
 <h2>volume</h2>
 <p>Sets a sound volume.</p>
-<p class="warning">This parameter can only be specified via <a href="command.html">command line</a>.</p>
+<p class="block warning">This parameter can only be specified via <a href="command.html">command line</a>.</p>
 <p><b>Valid values</b>: any integer within a range [0;100]</p>
 <p><b>If not specified</b>: Do not change the sound volume.</p>
 
