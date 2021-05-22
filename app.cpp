@@ -2642,18 +2642,17 @@ void App::saveState()
     if(!player || !sound)
         return;
 
-    QSettings* ini = new QSettings(settingsDir+"state.ini", QSettings::IniFormat);
-    ini->beginGroup("state");
-    ini->setValue("volume", qRound(VOLUME_OWNER->getVolume()*100));
-    ini->setValue("play", sound->getState() == mse_scsPlaying);
+    QSettings ini(settingsDir+"state.ini", QSettings::IniFormat);
+    ini.beginGroup("state");
+    ini.setValue("volume", qRound(VOLUME_OWNER->getVolume()*100));
+    ini.setValue("play", sound->getState() == mse_scsPlaying);
     if((playlist->getIndex() >= 0) && (playlist->getList()->size() > playlist->getIndex()))
-        ini->setValue("last", playlist->getList()->at(playlist->getIndex())->getFullFilename());
+        ini.setValue("last", playlist->getList()->at(playlist->getIndex())->getFullFilename());
     else
-        ini->setValue("last", "");
-    ini->setValue("mode", playlist->playbackModeToString(playlist->getPlaybackMode()));
-    ini->setValue("hotkeys", hotkeysOn);
-    ini->endGroup();
-    delete ini;
+        ini.setValue("last", "");
+    ini.setValue("mode", playlist->playbackModeToString(playlist->getPlaybackMode()));
+    ini.setValue("hotkeys", hotkeysOn);
+    ini.endGroup();
 }
 
 void App::saveStateList()
