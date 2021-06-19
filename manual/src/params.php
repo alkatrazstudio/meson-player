@@ -306,8 +306,8 @@ This keeps percussive sounds sharp, whereas normal ramping can slightly deaden t
 <p><b>Valid values</b>: true, false</p>
 <p><b>Default</b>: false</p>
 
-<hr id="show-radio-playlist-tags">
-<h2>show-radio-playlist-tags</h2>
+<hr id="show-playlist-tags-for-remote-sources">
+<h2>show-playlist-tags-for-remote-sources</h2>
 <p>In addition to showing the URL of a radio stream, also show the information from playlist tags (title, artist, etc).</p>
 <p class="block warning">Tags are only fetched from M3U playlists as of now.</p>
 <p><b>Valid values</b>: true, false</p>

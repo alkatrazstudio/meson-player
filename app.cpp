@@ -635,7 +635,7 @@ void App::onInfoChange()
     if(sound->getType() == mse_sctRemote)
     {
         curDir = sound->getTrackFilename();
-        if(settings.showRadioPlaylistTags)
+        if(settings.showPlaylistTagsForRemoteSources)
         {
             const auto* curSource = sound->getPlaylist()->getCurrentSource();
             if(curSource)
@@ -1187,8 +1187,8 @@ void App::loadConfig(const QString &filename)
     if(ini->contains("short-captions"))
         settings.shortCaptions = ini->value("short-captions", false).toBool();
 
-    if(ini->contains("show-radio-playlist-tags"))
-        settings.showRadioPlaylistTags = ini->value("show-radio-playlist-tags", true).toBool();
+    if(ini->contains("show-playlist-tags-for-remote-sources"))
+        settings.showPlaylistTagsForRemoteSources = ini->value("show-playlist-tags-for-remote-sources", true).toBool();
 
     if(ini->contains("shoutcast-playlists"))
         settings.shoutcastPlaylists = ini->value("shoutcast-playlists", true).toBool();
@@ -1577,9 +1577,9 @@ void App::parseCommandLine()
                     continue;
                 }
 
-                if(paramName == "show-radio-playlist-tags")
+                if(paramName == "show-playlist-tags-for-remote-sources")
                 {
-                    settings.showRadioPlaylistTags = (paramValue != "0");
+                    settings.showPlaylistTagsForRemoteSources = (paramValue != "0");
                     continue;
                 }
 

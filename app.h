@@ -118,7 +118,7 @@ struct Settings {
     bool useICU = false;
     int icuMinConfidence = 0;
     bool icuUseForRemoteSources = false;
-    bool showRadioPlaylistTags = true;
+    bool showPlaylistTagsForRemoteSources = true;
 };
 
 struct PlaylistSource {
