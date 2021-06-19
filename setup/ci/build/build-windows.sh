@@ -27,7 +27,7 @@ pacman --noconfirm --needed -S \
     p7zip \
     mingw-w64-x86_64-quazip \
     mingw-w64-x86_64-gcc \
-    mingw-w64-x86_64-pkg-config \
+    mingw-w64-x86_64-pkgconf \
     > /dev/null
 
 
