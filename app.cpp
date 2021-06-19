@@ -895,27 +895,27 @@ bool App::loadSettings()
 #ifdef Q_OS_WIN
     if(settings.modsCmd.testFlag(Qt::ShiftModifier))
     {
-        settings.modsCmd &~ Qt::ShiftModifier;
+        settings.modsCmd = settings.modsCmd & ~Qt::ShiftModifier;
         SETERROR(Err::shiftModNotSupported);
     }
     if(settings.modsLoad.testFlag(Qt::ShiftModifier))
     {
-        settings.modsLoad &~ Qt::ShiftModifier;
+        settings.modsLoad = settings.modsLoad & ~Qt::ShiftModifier;
         SETERROR(Err::shiftModNotSupported);
     }
     if(settings.modsSave.testFlag(Qt::ShiftModifier))
     {
-        settings.modsSave &~ Qt::ShiftModifier;
+        settings.modsSave = settings.modsSave & ~Qt::ShiftModifier;
         SETERROR(Err::shiftModNotSupported);
     }
     if(settings.modsMM.testFlag(Qt::ShiftModifier))
     {
-        settings.modsMM &~ Qt::ShiftModifier;
+        settings.modsMM = settings.modsMM & ~Qt::ShiftModifier;
         SETERROR(Err::shiftModNotSupported);
     }
     if(settings.modsMM2.testFlag(Qt::ShiftModifier))
     {
-        settings.modsMM2 &~ Qt::ShiftModifier;
+        settings.modsMM2 = settings.modsMM2 & ~Qt::ShiftModifier;
         SETERROR(Err::shiftModNotSupported);
     }
 #endif
