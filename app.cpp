@@ -1105,6 +1105,9 @@ void App::loadConfig(const QString &filename)
             settings.icuMinConfidence = confidence;
     }
 
+    if(ini->contains("icu-for-remote-sources"))
+        settings.icuUseForRemoteSources = ini->value("icu-for-remote-sources", false).toBool();
+
     if(ini->contains("log"))
         settings.logErrors = ini->value("log", false).toBool();
 
@@ -1417,6 +1420,12 @@ void App::parseCommandLine()
                     int _confidence = paramValue.toInt(&ok);
                     if(ok)
                         settings.icuMinConfidence = _confidence;
+                    continue;
+                }
+
+                if(paramName == "icu-for-remote-sources")
+                {
+                    settings.icuUseForRemoteSources = (paramValue == "1");
                     continue;
                 }
 
@@ -2097,6 +2106,7 @@ bool App::createSoundObject()
     soundParams.decodeOnly = true;
     soundParams.useICU = settings.useICU;
     soundParams.icuMinConfidence = settings.icuMinConfidence;
+    soundParams.icuUseForRemoteSources = settings.icuUseForRemoteSources;
     if(!sound->init(soundParams))
         return false;
     connect(sound, SIGNAL(onInfoChange()), SLOT(onInfoChange()));

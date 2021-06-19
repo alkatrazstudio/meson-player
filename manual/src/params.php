@@ -82,6 +82,13 @@ You can pass these parameters only if the application isn't running yet (except
 <p><b>Valid values</b>: true, false</p>
 <p><b>Default</b>: false</p>
 
+<hr id="icu-for-remote-sources">
+<h2>icu-for-remote-sources</h2>
+<p>Use ICU to detect a character set of remote sources.</p>
+<p class="block warning">Character set detection of remote sources is less precise than of local files.</p>
+<p><b>Valid values</b>: true, false</p>
+<p><b>Default</b>: false</p>
+
 <hr id="icu-min-confidence">
 <h2>icu-min-confidence</h2>
 <p>When <a href="#index">using ICU</a> do not consider any codepages if the ICU confidence score for this codepage is lower than this parameter.</p>
