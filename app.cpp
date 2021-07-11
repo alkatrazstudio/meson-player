@@ -789,7 +789,7 @@ void App::onActionCurrentFile()
         return;
     if(lastTrackData.filename.isEmpty())
         return;
-    MSE_SoundChannelType channelType = player->typeByFilename(lastTrackData.filename);
+    MSE_SoundChannelType channelType = player->typeByUri(lastTrackData.filename);
     if((channelType == mse_sctUnknown) || (channelType == mse_sctRemote))
         return;
     if(!QFile::exists(lastTrackData.filename))
@@ -2162,7 +2162,7 @@ void App::updateLastTrackData()
     else
         lastTrackData.title.clear();
     lastTrackData.filename = sound->getTrackFilename();
-    lastTrackData.fullFilename = playlist->getCurrentSource()->getFullFilename();
+    lastTrackData.fullFilename = playlist->getCurrentSource()->entry.uri;
     lastTrackData.duration = sound->getTrackDuration();
     lastTrackData.fullDuration = sound->getFullTrackDuration();
 }
@@ -2687,7 +2687,7 @@ void App::saveState()
     ini.setValue("volume", qRound(VOLUME_OWNER->getVolume()*100));
     ini.setValue("play", sound->getState() == mse_scsPlaying);
     if((playlist->getIndex() >= 0) && (playlist->getList()->size() > playlist->getIndex()))
-        ini.setValue("last", playlist->getList()->at(playlist->getIndex())->getFullFilename());
+        ini.setValue("last", playlist->getList()->at(playlist->getIndex())->getPlaylistUri());
     else
         ini.setValue("last", "");
     ini.setValue("mode", playlist->playbackModeToString(playlist->getPlaybackMode()));
@@ -2737,7 +2737,7 @@ void App::loadState()
     {
         doPlay = ini->value("play", false).toBool() && settings.autoResume;
         QString fName = settingsDir+"playlist";
-        playlist->parse(fName, statePlaylist);
+        MSE_Playlist::parse(fName, statePlaylist);
         lastFilename = ini->value("last", "").toString();
     }
     else
@@ -2788,7 +2788,7 @@ void App::initSound()
             if(settings.index >= 0)
                 fileIndex = settings.index;
             else
-                fileIndex = playlist->indexOfFullName(lastFilename);
+                fileIndex = playlist->indexOfUri(lastFilename);
             ignoreContState = true;
             sound->openFromList(fileIndex);
             ignoreContState = false;
