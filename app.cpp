@@ -2337,10 +2337,10 @@ bool App::createTray()
             showFile(userSettingsFilename);
     });
 
-    actionCurrentFile = trayMenu->addAction(tr("Current File"));
+    actionCurrentFile = trayMenu->addAction(tr("Current file"));
     connect(actionCurrentFile, SIGNAL(triggered()), SLOT(onActionCurrentFile()));
 
-    actionCloseFile = trayMenu->addAction(tr("Close the File"));
+    actionCloseFile = trayMenu->addAction(tr("Close the file"));
     connect(actionCloseFile, SIGNAL(triggered()), SLOT(onActionCloseFile()));
     actionCloseFile->setVisible(!settings.closeOnStop);
 
@@ -2354,7 +2354,7 @@ bool App::createTray()
                 showLfmLoginNotification = true;
                 lfm->startWebAuth();
             });
-            actionLfmLoginForm = menuLfm->addAction(tr("In-App login"));
+            actionLfmLoginForm = menuLfm->addAction(tr("In-app login"));
             connect(actionLfmLoginForm, &QAction::triggered, [this](){
                 LastfmPassForm::showForm([this](const QString& username, const QString& password){
                     showLfmLoginNotification = true;
@@ -2415,7 +2415,7 @@ bool App::createTray()
         QString html =
             "<h3>"+qApp->applicationDisplayName().toHtmlEscaped()+"</h3>"
             "<p>"+tr("Version:").toHtmlEscaped()+" "+CoreApp::majMinVersion().toString().toHtmlEscaped()+"</p>"
-            "<p>"+tr("Built:").toHtmlEscaped()+" "+CoreApp::buildDate().toString(Qt::DefaultLocaleLongDate)+"</p>"
+            "<p>"+tr("Build date:").toHtmlEscaped()+" "+CoreApp::buildDate().toString(Qt::DefaultLocaleLongDate)+"</p>"
             "<p>&copy; "+qApp->organizationName().toHtmlEscaped()+", "+QString::number(CoreApp::buildDate().date().year())+"</p>";
 
         aboutText = new QTextBrowser(aboutDialog);

@@ -4,192 +4,192 @@
 <context>
     <name>App</name>
     <message>
-        <location filename="../app.cpp" line="2154"/>
+        <location filename="../app.cpp" line="2313"/>
         <source>Mode</source>
         <translation>Режим</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2157"/>
+        <location filename="../app.cpp" line="2316"/>
         <source>Track once</source>
         <translation>Трэк без повтора</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2158"/>
+        <location filename="../app.cpp" line="2317"/>
         <source>Playlist once</source>
         <translation>Плейлист без повтора</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2159"/>
+        <location filename="../app.cpp" line="2318"/>
         <source>Loop track</source>
         <translation>Зациклить трэк</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2160"/>
+        <location filename="../app.cpp" line="2319"/>
         <source>Loop playlist</source>
         <translation>Зациклить плейлист</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2161"/>
+        <location filename="../app.cpp" line="2320"/>
         <source>Random</source>
         <translation>Случайный порядок</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2164"/>
+        <location filename="../app.cpp" line="2323"/>
         <source>Playlists</source>
         <translation>Плейлисты</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2181"/>
-        <source>Current File</source>
-        <translation>Текущий файл</translation>
-    </message>
-    <message>
-        <location filename="../app.cpp" line="2184"/>
-        <source>Close the File</source>
-        <translation>Закрыть файл</translation>
-    </message>
-    <message>
-        <location filename="../app.cpp" line="688"/>
+        <location filename="../app.cpp" line="763"/>
         <source>Cannot create %1</source>
         <translation>Не удалось создать %1</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="694"/>
+        <location filename="../app.cpp" line="768"/>
         <source>Cannot write to %1</source>
         <translation>Не удалось записать в %1</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="705"/>
-        <location filename="../app.cpp" line="730"/>
+        <location filename="../app.cpp" line="777"/>
+        <location filename="../app.cpp" line="802"/>
         <source>File not found: %1</source>
         <translation>Файл не найден: %1</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="718"/>
+        <location filename="../app.cpp" line="790"/>
         <source>Directory not found: %1</source>
         <translatorcomment>Папка не наёдена: %1</translatorcomment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2110"/>
+        <location filename="../app.cpp" line="2269"/>
         <source>Cannot move the current file to the Trash</source>
         <translation>Не удаётся поместить текущий файл в Корзину</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2147"/>
+        <location filename="../app.cpp" line="2306"/>
         <source>Move to Trash</source>
         <translation>Переместить в Корзину</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2166"/>
+        <location filename="../app.cpp" line="2325"/>
         <source>Hot keys</source>
         <translation>Горячие клавиши</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2171"/>
+        <location filename="../app.cpp" line="2330"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2172"/>
+        <location filename="../app.cpp" line="2331"/>
         <source>Open settings file</source>
         <translation>Открыть файл с настройками</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2176"/>
+        <location filename="../app.cpp" line="2335"/>
         <source>Show settings location</source>
         <translation>Показать местоположение настроек</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2188"/>
+        <location filename="../app.cpp" line="2340"/>
+        <source>Current file</source>
+        <translation>Текущий файл</translation>
+    </message>
+    <message>
+        <location filename="../app.cpp" line="2343"/>
+        <source>Close the file</source>
+        <translation>Закрыть файл</translation>
+    </message>
+    <message>
+        <location filename="../app.cpp" line="2349"/>
         <source>Last.fm</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2191"/>
+        <location filename="../app.cpp" line="2352"/>
         <source>Web login</source>
         <translation>Вход через браузер</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2196"/>
-        <source>In-App login</source>
+        <location filename="../app.cpp" line="2357"/>
+        <source>In-app login</source>
         <translation>Вход через приложение</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2216"/>
+        <location filename="../app.cpp" line="2418"/>
+        <source>Build date:</source>
+        <translation>Дата сборки:</translation>
+    </message>
+    <message>
+        <location filename="../app.cpp" line="2377"/>
         <source>Log out</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2219"/>
-        <location filename="../app.cpp" line="2308"/>
+        <location filename="../app.cpp" line="2380"/>
+        <location filename="../app.cpp" line="2470"/>
         <source>logged out</source>
         <translation>выход из аккаунта</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2230"/>
+        <location filename="../app.cpp" line="2392"/>
         <source>Help</source>
         <translation>Помощь</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2231"/>
+        <location filename="../app.cpp" line="2393"/>
         <source>Manual</source>
         <translation>Руководство</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2238"/>
+        <location filename="../app.cpp" line="2400"/>
         <source>Website</source>
         <translation>Сайт</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2241"/>
+        <location filename="../app.cpp" line="2403"/>
         <source>About...</source>
         <translation>О программе...</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2255"/>
+        <location filename="../app.cpp" line="2417"/>
         <source>Version:</source>
         <translation>Версия:</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2256"/>
-        <source>Built:</source>
-        <translation>Собрано:</translation>
-    </message>
-    <message>
-        <location filename="../app.cpp" line="2272"/>
+        <location filename="../app.cpp" line="2434"/>
         <source>Quit</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2307"/>
+        <location filename="../app.cpp" line="2469"/>
         <source>not logged in</source>
         <translation>вход не выполнен</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2312"/>
-        <location filename="../app.cpp" line="2314"/>
+        <location filename="../app.cpp" line="2474"/>
+        <location filename="../app.cpp" line="2476"/>
         <source>connecting...</source>
         <translation>соединение...</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2318"/>
-        <location filename="../app.cpp" line="2320"/>
+        <location filename="../app.cpp" line="2480"/>
+        <location filename="../app.cpp" line="2482"/>
         <source>waiting for authorization...</source>
         <translation>ожидание авторизации...</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2326"/>
+        <location filename="../app.cpp" line="2488"/>
         <source>logged in</source>
         <translation>вход выполнен</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2502"/>
+        <location filename="../app.cpp" line="2664"/>
         <source>file not loaded</source>
         <translation>файл не загружен</translation>
     </message>
     <message>
-        <location filename="../app.cpp" line="2558"/>
+        <location filename="../app.cpp" line="2720"/>
         <source>System audio volume</source>
         <translation>Громкость системы</translation>
     </message>
