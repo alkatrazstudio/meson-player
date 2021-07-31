@@ -789,9 +789,6 @@ void App::onActionCurrentFile()
         return;
     if(lastTrackData.filename.isEmpty())
         return;
-    MSE_SoundChannelType channelType = player->typeByUri(lastTrackData.filename);
-    if((channelType == mse_sctUnknown) || (channelType == mse_sctRemote))
-        return;
     if(!QFile::exists(lastTrackData.filename))
         return;
 
