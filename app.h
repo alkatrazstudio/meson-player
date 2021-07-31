@@ -155,7 +155,8 @@ public:
         invalidProxyScheme,
         invalidProxyPort,
         trayInaccessible,
-        createDir
+        createDir,
+        createFile
     };
     Q_ENUM(Err)
 
@@ -359,6 +360,8 @@ public:
     explicit App(int &argc, char **argv);
     ~App();
 
+    void migrateSettings();
+    void copyDir(const QDir& src, const QDir& dst);
     void onHotKey(int id, bool isPressed);
 #ifdef Q_OS_LINUX
     bool handleXKeyPress(const xcb_key_press_event_t *event, bool isPressed);

@@ -283,6 +283,8 @@ int App::main()
             << "[" << organizationDomain() << "]";
 
     exitAfterMain = false;
+
+    migrateSettings();
     QDir d(settingsDir);
     if(!d.mkpath(settingsDir))
         SETERROR(Err::createDir, settingsDir);
@@ -484,7 +486,7 @@ App::App(int& argc, char** argv) : CoreApp(argc, argv)
 #endif
   ,curTrayIco(nullptr)
   ,exitNow(false)
-  ,settingsDir(QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first()+"/."+qCoreApp->applicationName()+"/")
+  ,settingsDir(QStandardPaths::standardLocations(QStandardPaths::AppConfigLocation).at(0)+"/")
   ,appDir(applicationDirPath()+"/")
   ,globalSettingsFilename(appDir+"settings.ini")
   ,userSettingsFilename(settingsDir+"settings.ini")
@@ -550,6 +552,57 @@ App::~App()
     xcb_key_symbols_free(xkeysyms);
 #endif
     delete modeActions;
+}
+
+void App::migrateSettings()
+{
+    QDir newDir(settingsDir);
+    if(newDir.exists())
+        return;
+
+    auto oldPath = QStandardPaths::standardLocations(QStandardPaths::HomeLocation).at(0)+"/."+qCoreApp->applicationName();
+    QDir oldDir(oldPath);
+    if(!oldDir.exists())
+        return;
+
+    qDebug() << "Performing a config migration...";
+    copyDir(oldDir, newDir);
+
+    auto i = 0;
+    forever {
+        auto prefix = i ? QString::number(i) : "";
+        auto renamedPath = oldPath+"_bak"+prefix;
+        if(oldDir.exists(renamedPath))
+        {
+            i++;
+            continue;
+        }
+        oldDir.rename(oldPath, renamedPath);
+        break;
+    }
+}
+
+void App::copyDir(const QDir& src, const QDir& dst)
+{
+    if(!dst.mkpath("."))
+        SETERROR(Err::createDir, dst.absolutePath());
+
+    auto entries = src.entryInfoList(QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot | QDir::Readable);
+    foreach(auto entry, entries)
+    {
+        auto srcPath = entry.absoluteFilePath();
+        auto dstPath = dst.absoluteFilePath(entry.fileName());
+
+        if(entry.isDir())
+        {
+            copyDir(QDir(srcPath), QDir(dstPath));
+        }
+        else
+        {
+            if(!QFile::copy(srcPath, dstPath))
+                SETERROR(Err::createFile, dstPath);
+        }
+    }
 }
 
 #ifdef MSE_MODULE_MPRIS
@@ -3520,6 +3573,7 @@ QString App::errorCodeToString(Err code)
         case Err::invalidProxyPort: return QStringLiteral("Invalid proxy port");
         case Err::trayInaccessible: return QStringLiteral("System tray is inaccessible");
         case Err::createDir: return QStringLiteral("Cannot create dir");
+        case Err::createFile: return QStringLiteral("Cannot create file");
         default: return QString();
     }
 }
